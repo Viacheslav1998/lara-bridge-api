@@ -1,0 +1,50 @@
+services:
+  app:
+    build:
+      context: ./php
+    container_name: lara_bridge_app
+    working_dir: /var/www
+    volumes:
+      - ./laravel:/var/www
+    networks:
+      - lara_bridge_net
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./laravel:/var/www
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - lara_bridge_net
+
+  postgres:
+    image: postgres:15
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: laravel
+      POSTGRES_PASSWORD: laravel
+      POSTGRES_DB: laravel
+    ports:
+      - "5433:5432"
+    volumes:
+      - lara_bridge_pgdata:/var/lib/postgresql/data
+    networks:
+      - lara_bridge_net
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@local.dev
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    networks:
+      - lara_bridge_net
+
+networks:
+  lara_bridge_net:
+
+volumes:
+  lara_bridge_pgdata:
