@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('country');
             $table->integer('phone');
-            $table->integer('number');
-            $table->boolean('super');
+            $table->string('number');
+            $table->string('super');
             $table->string('email');
             $table->longText('bio');
             $table->timestamps();
