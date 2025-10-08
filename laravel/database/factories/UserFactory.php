@@ -8,18 +8,12 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * old way @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ *new wat <\App\Domain\User\Entities\User>
  */
 class UserFactory extends Factory
 {
-    // database/factories/UserFactory.php
     protected $model = User::class;
-
-
-    /**
-     * The current password being used by the factory.
-     */
-    // protected static ?string $password;
 
     /**
      * Define the model's default state.
