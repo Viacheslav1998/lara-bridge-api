@@ -42,15 +42,4 @@ class User extends Model
         return UserFactory::new();
     }
 
-
-    /**
-     * Eloquent 
-     */
-
-
-
-    /**
-     * query-builder  
-     */
-
 }
