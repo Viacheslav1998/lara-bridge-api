@@ -3,16 +3,29 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
+use App\Domain\User\Services\UserService;
 
 class UserController
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(UserService $service)
     {
-        //
+        $users = $service->users();
+        return response()->json($users);
     }
+
+    public function testGetData()
+    {
+        return response()->json(
+            [
+                'name' => 'testing',
+                'message' => 'data message for testing'
+            ]
+        );
+    }
+
 
     /**
      * Store a newly created resource in storage.
