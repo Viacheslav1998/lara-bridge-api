@@ -3,25 +3,42 @@
 namespace App\Domain\User\Repositories;
 
 use App\Domain\User\Entities\User;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * UserRepository
  */
 class UserRepository
 {
-	
-		function __construct(argument)
-		{
-			// code...
-		}
+        // Eloquent
 
         /**
-         * Eloquent 
-         */
-
-
+        * all users
+        */
+        public function getAll()
+        {
+            return User::all();
+        } 
 
         /**
-         * query-builder  
+         * get current/id user
          */
+        public function find($id)
+        {
+            return User::findOrFail($id);
+        }
+
+
+
+        // Query-Builder  
+        
+
+        /**
+         * all data / paginate
+         */
+        public function all() 
+        {
+            return User::query()->paginate(10);
+        } 
+
 }
