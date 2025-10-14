@@ -16,17 +16,6 @@ class UserController
         return response()->json($users);
     }
 
-    public function testGetData()
-    {
-        return response()->json(
-            [
-                'name' => 'testing',
-                'message' => 'data message for testing'
-            ]
-        );
-    }
-
-
     /**
      * Store a newly created resource in storage.
      */
