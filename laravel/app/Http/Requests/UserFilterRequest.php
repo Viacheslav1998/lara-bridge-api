@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\ValidationRule;
 
 class UserFilterRequest extends FormRequest
 {
@@ -43,16 +44,32 @@ class UserFilterRequest extends FormRequest
      */
     public function rules(): array
     {
-        // you need another way
-        return [
-            'first_name' => 'required|max:255',
-            'last_name' => 'required|max:255',
-            'country' => 'required|max:255',
-            'phone' => 'required',
-            'number' => 'required',
-            'super' => 'required',
-            'email' => 'required|unique|max:255',
-            'bio' => 'require'
-        ];
+        return match ($this->method()) {
+            'POST' => [
+                'firts_name' => ['required', 'string', 'max:255'],
+                'last_name' => ['required', 'string', 'max:255'],
+                'country' => ['required', 'string', 'max:255'],
+                'phone' => ['required'],
+                'number' => ['required'],
+                'super' => ['required'],
+                'email' => ['required', 'string', 'max:255'],
+                'bio' => ['required', 'string'],
+            ],
+            'PUT', 'PATCH' => [
+                'firts_name' => ['required', 'string', 'max:255'],
+                'last_name' => ['required', 'string', 'max:255'],
+                'country' => ['required', 'string', 'max:255'],
+                'phone' => ['required'],
+                'number' => ['required'],
+                'super' => ['required'],
+                'email' => ['required', 'string', 'max:255'],
+                'bio' => ['required', 'string'],                
+            ],
+            'GET' => [
+                'country' => ['nullable', 'string', 'size:2'],
+                'active' => ['nullable', 'boolean']
+            ],
+            default => [],
+        };
     }
 }
