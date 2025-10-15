@@ -2,22 +2,35 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use App\Domain\User\Services\UserService;
-use App\Http\Request\UserFilterRequest;
+use App\Http\Requests\UserFilterRequest;
+use App\Http\Resources\UserResource;
 
 class UserController
 {
+    public function __construct(
+        private UserService $service
+    ) {}
+
     /**
      * Display a listing of the resource.
      */
-    public function index(UserService $service, UserFilterRequest $request)
+    public function index(UserFilterRequest $request)
     {
-        $filters = $request->validate();
-        
-        $user = $service->getFilterUsers($filters);
+        $filters = $request->validated();
 
-        return UserResource::collection($users);
+        try {
+
+            $users = $this->service->getUsers($filters);
+
+            return UserResponse::success(
+                UserResource::collection($users),
+                'Список пользователей получен!'
+            );
+
+        } catch (\Throwable $e) {
+            return UserResponse::error('не удалось получить список пользователей', 500);
+        }
     }
 
     /**
