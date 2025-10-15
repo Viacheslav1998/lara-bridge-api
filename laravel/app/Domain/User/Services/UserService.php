@@ -16,8 +16,8 @@ class UserService
 		return $this->repository->find($id);
 	}
 
-	public function users()
+	public function getUsers(array $filters = [])
 	{
-		return $this->repository->getAll();
+		return $this->repository->all($filters);
 	}
 }   

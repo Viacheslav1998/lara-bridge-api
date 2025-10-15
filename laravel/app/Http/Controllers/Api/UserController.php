@@ -4,16 +4,20 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Domain\User\Services\UserService;
+use App\Http\Request\UserFilterRequest;
 
 class UserController
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(UserService $service)
+    public function index(UserService $service, UserFilterRequest $request)
     {
-        $users = $service->users();
-        return response()->json($users);
+        $filters = $request->validate();
+        
+        $user = $service->getFilterUsers($filters);
+
+        return UserResource::collection($users);
     }
 
     /**

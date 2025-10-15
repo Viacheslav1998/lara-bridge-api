@@ -3,7 +3,6 @@
 namespace App\Domain\User\Repositories;
 
 use App\Domain\User\Entities\User;
-use Illuminate\Database\Eloquent\Collection;
 
 /**
  * UserRepository
@@ -13,11 +12,23 @@ class UserRepository
         // Eloquent
 
         /**
-        * all users
+        * Get All /
+        * Filters /
+        * [Country, Active]
         */
-        public function getAll()
+        public function all(array $filters = [])
         {
-            return User::all();
+            $query = User::query();
+
+            if (!empty($filters['country'])) {
+                $query->where('country', $filters['country']);
+            }
+
+            if (!empty($filters['active'])) {
+                $query->where('active', $filters['active']);
+            }
+
+            return $query->get();
         } 
 
         /**
@@ -30,13 +41,18 @@ class UserRepository
 
 
 
+        public function save()
+        {
+            
+        }
+
         // Query-Builder  
         
 
         /**
          * all data / paginate
          */
-        public function all() 
+        public function all_x() 
         {
             return User::query()->paginate(10);
         } 
