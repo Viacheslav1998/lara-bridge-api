@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Domain\User\Services\UserService;
 use App\Http\Requests\UserFilterRequest;
 use App\Http\Resources\UserResource;
+use App\Http\Responses\UserResponse;
 
 class UserController
 {
