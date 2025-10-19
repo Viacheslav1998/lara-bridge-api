@@ -3,7 +3,7 @@
 namespace App\Domain\User\Repositories;
 
 use App\Domain\User\Entities\User;
-
+use Illuminate\Support\Facades\Log;
 /**
  * UserRepository
  */
@@ -16,16 +16,27 @@ class UserRepository
         * Filters /
         * [Country, Active]
         */
-        public function all(array $filters = [])
+        public function findByFilters(array $filters)
         {
             $query = User::query();
 
+            Log::debug($query->toSql());
+
+            if (!empty($filters['name'])) {
+                $query->where('name', $filters['name']);
+            }
+
+            // Is one enough?
             if (!empty($filters['country'])) {
                 $query->where('country', $filters['country']);
             }
 
-            if (!empty($filters['active'])) {
-                $query->where('active', $filters['active']);
+            if (isset($filters['active'])) {
+                if ($filters['active'] === 'null') {
+                    $query->whereNull('active');
+                } else {
+                    $query->where('active', $filters['active']);
+                }
             }
 
             return $query->get();
@@ -39,8 +50,6 @@ class UserRepository
             return User::findOrFail($id);
         }
 
-
-
         public function save()
         {
             
@@ -48,7 +57,6 @@ class UserRepository
 
         // Query-Builder  
         
-
         /**
          * all data / paginate
          */

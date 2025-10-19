@@ -16,22 +16,21 @@ class UserController
     /**
      * Display a listing of the resource.
      */
-    public function index(UserFilterRequest $request)
+    public function index(?string $name, UserFilterRequest $request, UserService $service)
     {
-        $filters = $request->validated();
+        $filters = [
+            'name' => $name,
+            'country' => $request->query('country'),
+            'active' => $request->query('active')
+        ];
 
         try {
-
-            $users = $this->service->getUsers($filters);
-
-            return UserResponse::success(
-                UserResource::collection($users),
-                'Список пользователей получен!'
-            );
-
-        } catch (\Throwable $e) {
-            return UserResponse::error('не удалось получить список пользователей', 500);
+            $users = $service->getUsers($filters);
+        } catch (\DomainException $e) {
+            return response()->json(['message' => $e->getMessage()], 404);
         }
+
+        return response()->json($users);
     }
 
     /**

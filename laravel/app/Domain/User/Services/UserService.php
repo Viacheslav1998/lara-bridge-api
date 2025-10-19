@@ -6,18 +6,23 @@ use App\Domain\User\Repositories\UserRepository;
 
 class UserService 
 { 
-	public function __construct(
-		protected UserRepository $repository
-	) {}
-
+	public function __construct(protected UserRepository $users) 
+	{	}
 
 	public function get($id)
 	{
-		return $this->repository->find($id);
+		return $this->users->find($id);
 	}
 
-	public function getUsers(array $filters = [])
+	public function getUsers(array $filters): array
 	{
-		return $this->repository->all($filters);
+		$users = $this->users->findByFilters($filters);
+
+		if ($users->isEmpty()) {
+			throw new \DomainException("Пользователи не найдены");
+			
+		}
+
+		return $users;
 	}
 }   

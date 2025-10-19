@@ -7,6 +7,6 @@ use App\Http\Controllers\Api\UserController;
 Route::get('/test', [UserController::class, 'testGetData']);
 
 // Users
-Route::get('/users', [UserController::class, 'index']);
+Route::get('/users/{name?}', [UserController::class, 'index']);
 
 // Resource >

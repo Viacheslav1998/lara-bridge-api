@@ -19,7 +19,7 @@ class UserResponse
 		return response()->json([
 			'status' => 'error',
 			'message' => $message
-		], $code);
+		]);
 	}
 
 }
