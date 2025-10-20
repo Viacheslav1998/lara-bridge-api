@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Domain\User\Services\UserService;
 use App\Http\Requests\UserFilterRequest;
+use App\Domain\User\Services\UserService;
 use App\Http\Resources\UserResource;
 use App\Http\Responses\UserResponse;
 use Illuminate\Http\Request;
@@ -21,12 +21,11 @@ class UserController
      */
     public function index(Request $request)
     {
-
         $filters = $request->all();
 
         $users = $this->userService->findUsersByFilters($filters);
 
-        return response()->json($users);
+        return UserResource::collection($users);
     }
 
     /**

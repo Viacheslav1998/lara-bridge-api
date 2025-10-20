@@ -5,7 +5,9 @@ use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Log;
 
 // Users
-Route::get('/users', [UserController::class, 'index']);
+
+Route::get('/users-filters', [UserController::class, 'index']);
+// Route::get('/users', [UserController::class, '']);
 
 // tests
 // Route::get('/test-log', function() {
