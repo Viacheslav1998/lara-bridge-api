@@ -12,12 +12,6 @@ class UserService
 	public function __construct(protected UserRepository $users) 
 	{	}
 
-	public function users()
-	{
-		return $this->users->all();
-	}
-
-
 	public function findUsersByFilters(array $filters)
 	{
 		$InvalidFilters = array_diff(array_keys($filters), $this->allowedFilters);
@@ -26,7 +20,7 @@ class UserService
 			$InvalidFilterName = reset($InvalidFilters);
 			throw new InvalidFilterException("Invaid filter: '{$InvalidFilterName}' . Allowed filters are: " . implode(', ', $this->allowedFilters));
 		}
-		
+
 		return $this->users->findByFilters($filters);
 	}
 
