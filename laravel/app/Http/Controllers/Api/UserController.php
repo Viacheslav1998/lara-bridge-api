@@ -6,23 +6,25 @@ use App\Domain\User\Services\UserService;
 use App\Http\Requests\UserFilterRequest;
 use App\Http\Resources\UserResource;
 use App\Http\Responses\UserResponse;
+use Illuminate\Http\Request;
 
 class UserController
 {
-    public function __construct(
-        private UserService $service
-    ) {}
+    protected $userService;
+
+    public function __construct(UserService $userService) {
+        $this->userService = $userService;
+    }
 
     /**
      * Display a listing of the resource.
      */
-    public function index(UserService $service)
+    public function index(Request $request)
     {
-        try {
-            $users = $this->service->users();
-        } catch (\DomainException $e) {
-            return response()->json(['message' => $e->getMessage()], 404);
-        }
+
+        $filters = $request->all();
+
+        $users = $this->userService->findUsersByFilters($filters);
 
         return response()->json($users);
     }

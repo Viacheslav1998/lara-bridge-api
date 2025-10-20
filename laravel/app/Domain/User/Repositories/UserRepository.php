@@ -15,9 +15,19 @@ class UserRepository
             return User::all();
         }
 
-        public function findByCountry(string $country)
+        public function findByFilters(array $filters)
         {
-            return User::where('country', $country)->get();
+            $query = User::query();
+
+            if (isset($filters['country'])) {
+                $query->where('country', $filters['country']);
+            }
+
+            if (isset($filters['first_name'])) {
+                $query->where('first_name', $filters['first_name']);
+            }
+
+            return $query->get();
         }
 
         public function find($id)

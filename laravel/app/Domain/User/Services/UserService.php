@@ -14,6 +14,12 @@ class UserService
 		return $this->users->all();
 	}
 
+
+	public function findUsersByFilters(array $filters)
+	{
+		return $this->users->findByFilters($filters);
+	}
+
 	public function getCurrentUser($id)
 	{
 		return $this->users->find($id);
