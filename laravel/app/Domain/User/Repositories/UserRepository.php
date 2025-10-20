@@ -20,8 +20,6 @@ class UserRepository
         {
             $query = User::query();
 
-            Log::debug($query->toSql());
-
             if (!empty($filters['name'])) {
                 $query->where('name', $filters['name']);
             }
