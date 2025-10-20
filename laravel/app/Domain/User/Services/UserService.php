@@ -3,9 +3,12 @@
 namespace App\Domain\User\Services;
 
 use App\Domain\User\Repositories\UserRepository;
+use App\Exceptions\InvalidFilterException;
 
 class UserService 
 { 
+	private $allowedFilters = ['country', 'first_name'];
+
 	public function __construct(protected UserRepository $users) 
 	{	}
 
@@ -17,6 +20,14 @@ class UserService
 
 	public function findUsersByFilters(array $filters)
 	{
+		$InvalidFilters = array_diff(array_keys($filters), $this->allowedFilters);
+
+		if (!empty($InvalidFilters)) {
+			$InvalidFilterName = reset($InvalidFilters);
+			throw new InvalidFilterException("Invaid filter: '{$InvalidFilterName}' . Allowed filters are: " . implode(', ', $this->allowedFilters));
+		}
+
+// where fix ?
 		return $this->users->findByFilters($filters);
 	}
 
