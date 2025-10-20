@@ -11,38 +11,15 @@ class UserRepository
 {
         // Eloquent
 
-        /**
-        * Get All /
-        * Filters /
-        * [Country, Active]
-        */
-        public function findByFilters(array $filters)
+        public function all() {
+            return User::all();
+        }
+
+        public function findByCountry(string $country)
         {
-            $query = User::query();
+            return User::where('country', $country)->get();
+        }
 
-            if (!empty($filters['name'])) {
-                $query->where('name', $filters['name']);
-            }
-
-            // Is one enough?
-            if (!empty($filters['country'])) {
-                $query->where('country', $filters['country']);
-            }
-
-            if (isset($filters['active'])) {
-                if ($filters['active'] === 'null') {
-                    $query->whereNull('active');
-                } else {
-                    $query->where('active', $filters['active']);
-                }
-            }
-
-            return $query->get();
-        } 
-
-        /**
-         * get current/id user
-         */
         public function find($id)
         {
             return User::findOrFail($id);
@@ -54,10 +31,8 @@ class UserRepository
         }
 
         // Query-Builder  
-        
-        /**
-         * all data / paginate
-         */
+    
+
         public function all_x() 
         {
             return User::query()->paginate(10);

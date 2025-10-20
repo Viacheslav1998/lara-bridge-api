@@ -9,7 +9,12 @@ class UserService
 	public function __construct(protected UserRepository $users) 
 	{	}
 
-	public function get($id)
+	public function users()
+	{
+		return $this->users->all();
+	}
+
+	public function getCurrentUser($id)
 	{
 		return $this->users->find($id);
 	}

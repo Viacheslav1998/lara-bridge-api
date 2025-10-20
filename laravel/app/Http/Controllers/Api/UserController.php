@@ -16,16 +16,10 @@ class UserController
     /**
      * Display a listing of the resource.
      */
-    public function index(?string $name, UserFilterRequest $request, UserService $service)
+    public function index(UserService $service)
     {
-        $filters = [
-            'name' => $name,
-            'country' => $request->query('country'),
-            'active' => $request->query('active')
-        ];
-
         try {
-            $users = $service->getUsers($filters);
+            $users = $this->service->users();
         } catch (\DomainException $e) {
             return response()->json(['message' => $e->getMessage()], 404);
         }
