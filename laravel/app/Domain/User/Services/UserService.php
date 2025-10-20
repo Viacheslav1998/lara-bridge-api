@@ -26,8 +26,7 @@ class UserService
 			$InvalidFilterName = reset($InvalidFilters);
 			throw new InvalidFilterException("Invaid filter: '{$InvalidFilterName}' . Allowed filters are: " . implode(', ', $this->allowedFilters));
 		}
-
-// where fix ?
+		
 		return $this->users->findByFilters($filters);
 	}
 

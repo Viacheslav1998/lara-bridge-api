@@ -4,9 +4,7 @@ namespace App\Domain\User\Repositories;
 
 use App\Domain\User\Entities\User;
 use Illuminate\Support\Facades\Log;
-/**
- * UserRepository
- */
+
 class UserRepository
 {
         // Eloquent
