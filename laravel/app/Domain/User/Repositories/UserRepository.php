@@ -9,10 +9,6 @@ class UserRepository
 {
         // Eloquent
 
-        public function all() {
-            return User::all();
-        }
-
         public function findByFilters(array $filters)
         {
             $query = User::query();

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\UserFilterRequest;
 use App\Domain\User\Services\UserService;
 use App\Http\Resources\UserResource;
-use App\Http\Responses\UserResponse;
+use App\Http\Responses\ApiResponse;
 use Illuminate\Http\Request;
 
 class UserController
@@ -17,15 +17,20 @@ class UserController
     }
 
     /**
-     * Display a listing of the resource.
+     * Custom default index
+     * filters [country, first_name]
+     * is empty - default get all
      */
     public function index(Request $request)
     {
         $filters = $request->all();
-
         $users = $this->userService->findUsersByFilters($filters);
+        
+        if ($users->isEmpty()) {
+            return ApiResponse::error("No Users Found", 404);
+        }
 
-        return UserResource::collection($users);
+        return ApiResponse::success(UserResource::collection($users), "users list");
     }
 
     /**

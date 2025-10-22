@@ -4,10 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Log;
 
-// Users
-
+/**
+ * Default get All users [/users-filters]
+ * find by key [country, first_name]
+ * users-filters?country=UK
+ */
 Route::get('/users-filters', [UserController::class, 'index']);
-// Route::get('/users', [UserController::class, '']);
+
+
 
 // tests
 // Route::get('/test-log', function() {
