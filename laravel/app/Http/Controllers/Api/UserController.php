@@ -23,14 +23,26 @@ class UserController
      */
     public function index(Request $request)
     {
-        $filters = $request->all();
-        $users = $this->userService->findUsersByFilters($filters);
-        
-        if ($users->isEmpty()) {
-            return ApiResponse::error("No Users Found", 404);
-        }
+        try {
+            $filters = $request->all();
+            $users = $this->userService->findUsersByFilters($filters);
 
-        return ApiResponse::success(UserResource::collection($users), "users list");
+            if ($users->isEmpty()) {
+                return ApiResponse::error("No Users Found", 404, "Resources nit Found");
+            }
+
+            return ApiResponse::success(UserResource::collection($users), "users list");
+        } catch (\Throwable $e) {
+            \Log::error("UserController@index error", [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+
+            return ApiResponse::serverError("Something went wrong", [
+                'exception' => class_basename($e),
+                'message' => $e->getMessage(),
+            ]);
+        }
     }
 
     /**
