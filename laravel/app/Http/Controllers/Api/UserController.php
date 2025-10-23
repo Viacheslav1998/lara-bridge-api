@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\UserFilterRequest;
 use App\Domain\User\Services\UserService;
+use App\Http\Requests\UserFilterRequest;
 use App\Http\Resources\UserResource;
 use App\Http\Responses\ApiResponse;
 use Illuminate\Http\Request;
@@ -28,7 +28,7 @@ class UserController
             $users = $this->userService->findUsersByFilters($filters);
 
             if ($users->isEmpty()) {
-                return ApiResponse::error("No Users Found", 404, "Resources nit Found");
+                return ApiResponse::error("No Users Found", 404, "Resources not Found");
             }
 
             return ApiResponse::success(UserResource::collection($users), "users list");

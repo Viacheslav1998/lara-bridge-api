@@ -13,12 +13,6 @@ use App\Http\Controllers\Analytics\UserAnalyticsController;
 //   return 200;
 // });
 
-/**
- * Default get All users [/users-filters]
- * find by key [country, first_name]
- * users-filters?country=UK
- */
-// Route::get('/users-filters', [UserController::class, 'index']);
 
 
 Route::prefix('analytics')->group(function() {
@@ -28,4 +22,10 @@ Route::prefix('analytics')->group(function() {
 
 
 // Resource 
+
+/**
+ * Default get All users [/users-filters]
+ * find by key [country, first_name]
+ * users-filters?country=UK
+ */
 Route::Resource('/users', UserController::class);

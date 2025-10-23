@@ -7,7 +7,7 @@ use App\Exceptions\InvalidFilterException;
 
 class UserService 
 { 
-	private $allowedFilters = ['country', 'first_name'];
+	private $allowedFilters = ['country', 'first_name', 'email'];
 
 	public function __construct(protected UserRepository $users) 
 	{	}
