@@ -14,6 +14,15 @@ use App\Http\Controllers\Analytics\UserAnalyticsController;
 // });
 
 
+Route::get('/', function() {
+	return [
+		'status' => 'ok',
+		'code' => 200,
+		'message' => 'nothing a special',
+	];
+});
+
+
 
 Route::prefix('analytics')->group(function() {
 	Route::get('users/test', [UserAnalyticsController::class, 'test']);

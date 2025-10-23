@@ -21,6 +21,10 @@ class UserRepository
                 $query->where('first_name', $filters['first_name']);
             }
 
+            if (isset($filters['email'])) {
+                $query->where('email', $filters['email']);
+            }
+
             return $query->get();
         }
 
