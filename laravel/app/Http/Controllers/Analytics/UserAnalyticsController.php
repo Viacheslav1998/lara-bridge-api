@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Analytics;
 
 use App\Domain\User\Services\UserService;
 use App\Http\Resources\UserResource;
-use App\Http\Responses\ApiResponse;
-use Illuminate\Http\Request;
+use App\Application\Actions\User\GetUsersCountAction;
 use Illuminate\Http\Request;
 
-class AnaliticsController
+class UserAnalyticsController
 {
     protected $userService;
 
@@ -16,8 +15,13 @@ class AnaliticsController
         $this->userService = $userService;
     }
     
-    pulic function getCountUsers()
+    public function getCountUsers()
     {
-        
+        return '123';
+    }
+
+    public function test()
+    {
+        return '123';
     }
 }

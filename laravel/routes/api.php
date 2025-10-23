@@ -1,15 +1,9 @@
 <?php 
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Log;
-
-/**
- * Default get All users [/users-filters]
- * find by key [country, first_name]
- * users-filters?country=UK
- */
-Route::get('/users-filters', [UserController::class, 'index']);
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Analytics\UserAnalyticsController;
 
 
 
@@ -19,4 +13,19 @@ Route::get('/users-filters', [UserController::class, 'index']);
 //   return 200;
 // });
 
-// Resource >
+/**
+ * Default get All users [/users-filters]
+ * find by key [country, first_name]
+ * users-filters?country=UK
+ */
+// Route::get('/users-filters', [UserController::class, 'index']);
+
+
+Route::prefix('analytics')->group(function() {
+	Route::get('users/test', [UserAnalyticsController::class, 'test']);
+	// ...
+});
+
+
+// Resource 
+Route::Resource('/users', UserController::class);
