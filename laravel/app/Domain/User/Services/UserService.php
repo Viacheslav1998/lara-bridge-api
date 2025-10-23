@@ -24,6 +24,11 @@ class UserService
 		return $this->users->findByFilters($filters);
 	}
 
+	public function getUsersCount()
+	{
+		return $this->user->count();
+	}
+
 	public function getCurrentUser($id)
 	{
 		return $this->users->find($id);

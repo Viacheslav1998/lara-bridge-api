@@ -24,6 +24,11 @@ class UserRepository
             return $query->get();
         }
 
+        public function count(): int
+        {
+            return User::query()->count();
+        }
+
         public function find($id)
         {
             return User::findOrFail($id);

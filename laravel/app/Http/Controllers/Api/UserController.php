@@ -45,6 +45,11 @@ class UserController
         }
     }
 
+    pulic function getCountUsers()
+    {
+        
+    }
+
     /**
      * Store a newly created resource in storage.
      */
