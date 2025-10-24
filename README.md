@@ -132,7 +132,14 @@ VITE_APP_NAME="${APP_NAME}"
 Копировать код
 docker-compose up -d --build
 
-4️⃣ Установите зависимости Laravel
+
+windows
+winpty docker exec -it lara_bridge_app bash
+composer install
+composer update
+you can use artisan 
+
+4️⃣ Установите зависимости Laravel linux
 docker-compose exec app composer install
 
 5️⃣ Сгенерируйте ключ приложения
