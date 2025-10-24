@@ -188,7 +188,7 @@ docker-compose exec app php artisan key:generate
 
 ```
 
-### 🐳 docker-compose.yaml
+### 🐳 docker-compose.yaml (для windows поменяй ./laravel:/var/www/ на ./laravel:/var/www/html)
 ```
 services:
   app:
