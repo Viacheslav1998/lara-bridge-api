@@ -14,14 +14,6 @@ use App\Http\Controllers\Analytics\UserAnalyticsController;
 // });
 
 
-Route::get('/', function() {
-	return [
-		'status' => 'ok',
-		'code' => 200,
-		'message' => 'nothing a special',
-	];
-});
-
 Route::get('/api/', function() {
 	return [
 		'status' => 'ok',
