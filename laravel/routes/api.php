@@ -22,6 +22,13 @@ Route::get('/', function() {
 	];
 });
 
+Route::get('/api/', function() {
+	return [
+		'status' => 'ok',
+		'code' => 200,
+		'message' => 'nothing a special',
+	];
+});
 
 
 Route::prefix('analytics')->group(function() {
