@@ -33,25 +33,6 @@
 ├──docker-compose.yml
 ```
 ---
-### WORK .ENV
-```
-
-APP_NAME=LaravelApp
-APP_ENV=local
-APP_KEY=
-APP_DEBUG=true
-APP_URL=http://localhost
-
-DB_CONNECTION=pgsql
-DB_HOST=db
-DB_PORT=5432
-DB_DATABASE=laravel
-DB_USERNAME=laravel
-DB_PASSWORD=secret
-
-```
----
-
 
 ###🐳 Полезные команды Docker Compose
 ```
