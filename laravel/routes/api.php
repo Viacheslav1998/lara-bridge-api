@@ -23,7 +23,6 @@ Route::get('/', function() {
 });
 
 
-
 Route::prefix('analytics')->group(function() {
 	Route::get('users/test', [UserAnalyticsController::class, 'test']);
 	// ...
