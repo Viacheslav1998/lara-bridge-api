@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Analytics;
 
 use App\Domain\User\Services\UserService;
-use App\Http\Resources\UserResource;
 use App\Application\Actions\User\GetUsersCountAction;
 use Illuminate\Http\Request;
 
