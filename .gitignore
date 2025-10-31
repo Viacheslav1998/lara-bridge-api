@@ -1,0 +1,16 @@
+# Локальные переменные окружения
+.env
+
+# Локальный override для Windows/WSL
+docker-compose.override.yml
+
+# Логи, временные файлы
+*.log
+*.cache
+tmp/
+node_modules/
+
+# IDE и редакторы
+.vscode/
+.idea/
+.DS_Store

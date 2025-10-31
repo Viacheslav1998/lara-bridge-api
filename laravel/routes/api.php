@@ -6,7 +6,6 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Analytics\UserAnalyticsController;
 
 
-
 // tests
 // Route::get('/test-log', function() {
 //   Log::error('test logger');
@@ -29,10 +28,10 @@ Route::prefix('analytics')->group(function() {
 });
 
 
-// Resource 
+// Resources
 
 /**
- * Default get All users [/users-filters]
+ * Default get All users
  * find by key [country, first_name]
  * users-filters?country=UK
  */
