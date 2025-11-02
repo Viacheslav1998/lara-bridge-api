@@ -6,7 +6,8 @@ use App\Domain\User\Services\UserService;
 use App\Http\Requests\UserFilterRequest;
 use App\Http\Resources\UserResource;
 use App\Http\Responses\ApiResponse;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class UserController
 {
@@ -21,28 +22,20 @@ class UserController
      * filters [country, first_name]
      * is empty - default get all
      */
-    public function index(Request $request)
+    public function index(UserFilterRequest $request)
     {
-        try {
-            $filters = $request->all();
-            $users = $this->userService->findUsersByFilters($filters);
+        $filters = $request->validated();
+        $users = $this->userService->findUsersByFilters($filters);
 
-            if ($users->isEmpty()) {
-                return ApiResponse::error("No Users Found", 404, "Resources not Found");
-            }
-
-            return ApiResponse::success(UserResource::collection($users), "users list");
-        } catch (\Throwable $e) {
-            \Log::error("UserController@index error", [
-                'error' => $e->getMessage(),
-                'trace' => $e->getTraceAsString(),
-            ]);
-
-            return ApiResponse::serverError("Something went wrong", [
-                'exception' => class_basename($e),
-                'message' => $e->getMessage(),
-            ]);
+        if ($users->isEmpty()) {
+             Log::error('Error users not found');
+            throw new ModelNotFoundException('No users Found.');
         }
+
+        return ApiResponse::success(
+            UserResource::collection($users),
+            'users list retrieved successfully'
+        );
     }
 
     /**
