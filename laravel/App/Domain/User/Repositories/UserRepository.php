@@ -43,12 +43,12 @@ class UserRepository
             
         }
 
-        // Query-Builder  
-    
-
         public function all_x() 
         {
             return User::query()->paginate(10);
         } 
+
+        // Query-Builder  
+    
 
 }
