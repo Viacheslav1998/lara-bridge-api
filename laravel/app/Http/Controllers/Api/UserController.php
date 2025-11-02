@@ -6,8 +6,6 @@ use App\Domain\User\Services\UserService;
 use App\Http\Requests\UserFilterRequest;
 use App\Http\Resources\UserResource;
 use App\Http\Responses\ApiResponse;
-// use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class UserController
 {
@@ -28,7 +26,6 @@ class UserController
         $users = $this->userService->findUsersByFilters($filters);
 
         if ($users->isEmpty()) {
-             Log::error('Error users not found');
             throw new ModelNotFoundException('No users Found.');
         }
 
