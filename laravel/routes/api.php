@@ -6,12 +6,11 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Analytics\UserAnalyticsController;
 
 
-
 // tests
-// Route::get('/test-log', function() {
-//   Log::error('test logger');
-//   return 200;
-// });
+Route::get('/test-log', function() {
+  Log::error('test logger');
+  return 200;
+});
 
 
 Route::get('/', function() {
@@ -22,18 +21,18 @@ Route::get('/', function() {
 	];
 });
 
-
+// analytics
 Route::prefix('analytics')->group(function() {
 	Route::get('users/test', [UserAnalyticsController::class, 'test']);
 	// ...
 });
 
 
-// Resource 
+// Resource | CRUD
+Route::Resource('/users', UserController::class);
 
 /**
- * Default get All users [/users-filters]
- * find by key [country, first_name]
- * users-filters?country=UK
+ * =======
+ * Filters
  */
-Route::Resource('/users', UserController::class);
+Route::get('/user-filter', [UserController::class, 'filter']);

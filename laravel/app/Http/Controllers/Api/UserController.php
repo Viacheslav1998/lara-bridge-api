@@ -6,6 +6,9 @@ use App\Domain\User\Services\UserService;
 use App\Http\Requests\UserFilterRequest;
 use App\Http\Resources\UserResource;
 use App\Http\Responses\ApiResponse;
+use App\Actions\User\GetUsersCountAction;
+use App\Actions\User\FilterUsersAction;
+use Illuminate\Http\Request;
 
 class UserController
 {
@@ -16,9 +19,7 @@ class UserController
     }
 
     /**
-     * Custom default index
-     * filters [country, first_name]
-     * is empty - default get all
+     * Get all Users / filters / need REFACTOR!
      */
     public function index(UserFilterRequest $request)
     {
@@ -65,5 +66,20 @@ class UserController
     public function destroy(string $id)
     {
         //
+    }
+
+    /**
+     * Find users using filters
+     */
+    public function filter(Request $request, FilterUsersAction $action)
+    {
+        $filters = $request->all();
+        $users = $action->execute($filters);
+
+        if ($users->isEmpty()) {
+            return ApiResponse::error('No users founds', 404);
+        }
+
+        return ApiResponse::success(UserResource::collection($users));
     }
 }
