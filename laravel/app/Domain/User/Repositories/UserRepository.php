@@ -13,17 +13,17 @@ class UserRepository
         {
             $query = User::query();
 
-            if (isset($filters['country'])) {
-                $query->where('country', $filters['country']);
-            }
-
-            if (isset($filters['first_name'])) {
-                $query->where('first_name', $filters['first_name']);
-            }
-
-            if (isset($filters['email'])) {
-                $query->where('email', $filters['email']);
-            }
+            $query->where(function ($q) use ($filters) {
+                if (isset($filters['country'])) {
+                    $q->orWhere('country', $filters['country']);
+                }
+                if (isset($filters['email'])) {
+                    $q->orWhere('email', $filters['email']);
+                }
+                if (isset($filters['first_name'])) {
+                    $q->orWhere('first_name', $filters['first_name']);
+                }
+            });
 
             return $query->get();
         }
