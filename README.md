@@ -181,10 +181,11 @@ composer update
 you can use artisan 
 
 4️⃣ Установите зависимости Laravel linux
-docker-compose exec app composer install
+docker exec -it lara_bridge_app bash
+composer install
 
 5️⃣ Сгенерируйте ключ приложения
-docker-compose exec app php artisan key:generate
+php artisan key:generate
 
 ```
 
