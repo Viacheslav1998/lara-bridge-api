@@ -170,9 +170,7 @@ VITE_APP_NAME="${APP_NAME}"
 
 
 3️⃣ Запустите контейнеры
-Копировать код
 docker-compose up -d --build
-
 
 windows
 winpty docker exec -it lara_bridge_app bash
