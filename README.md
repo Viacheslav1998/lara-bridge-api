@@ -178,15 +178,17 @@ windows
 winpty docker exec -it lara_bridge_app bash
 composer install
 composer update
-you can use artisan 
 
-4️⃣ Установите зависимости Laravel linux
+Linux
 docker exec -it lara_bridge_app bash
 composer install
 
-5️⃣ Сгенерируйте ключ приложения
+И Сгенерируйте ключ приложения
 php artisan key:generate
 
+дать права доступа
+1 - cd laravel 
+2 - sudo chmod -R 777 storage bootstrap/cache
 ```
 
 ### 🐳 docker-compose.yaml (для windows поменяй ./laravel:/var/www/ на ./laravel:/var/www/html)
