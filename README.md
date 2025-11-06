@@ -187,6 +187,11 @@ php artisan key:generate
 дать права доступа
 1 - cd laravel 
 2 - sudo chmod -R 777 storage bootstrap/cache
+
+Миграции не забудь иначе ошиба будет 500
+docker exec -it lara_bridge_app bash
+php artisan migrate
+
 ```
 
 ### 🐳 docker-compose.yaml (для windows поменяй ./laravel:/var/www/ на ./laravel:/var/www/html)
