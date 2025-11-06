@@ -180,6 +180,7 @@ composer update
 Linux
 docker exec -it lara_bridge_app bash
 composer install
+composer update
 
 И Сгенерируйте ключ приложения
 php artisan key:generate
@@ -188,9 +189,12 @@ php artisan key:generate
 1 - cd laravel 
 2 - sudo chmod -R 777 storage bootstrap/cache
 
-Миграции не забудь иначе ошиба будет 500
+Миграции не забудь иначе ошибка будет 500
 docker exec -it lara_bridge_app bash
 php artisan migrate
+
+не забудь сразу и сиды
+php artisan db:seed
 
 ```
 
