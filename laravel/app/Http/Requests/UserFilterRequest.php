@@ -46,7 +46,7 @@ class UserFilterRequest extends FormRequest
     {
         return match ($this->method()) {
             'POST' => [
-                'firts_name' => ['required', 'string', 'max:255'],
+                'first_name' => ['required', 'string', 'max:255'],
                 'last_name' => ['required', 'string', 'max:255'],
                 'country' => ['required', 'string', 'max:255'],
                 'phone' => ['required'],
@@ -56,7 +56,7 @@ class UserFilterRequest extends FormRequest
                 'bio' => ['required', 'string'],
             ],
             'PUT', 'PATCH' => [
-                'firts_name' => ['required', 'string', 'max:255'],
+                'first_name' => ['required', 'string', 'max:255'],
                 'last_name' => ['required', 'string', 'max:255'],
                 'country' => ['required', 'string', 'max:255'],
                 'phone' => ['required'],
