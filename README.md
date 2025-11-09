@@ -170,21 +170,31 @@ VITE_APP_NAME="${APP_NAME}"
 
 
 3️⃣ Запустите контейнеры
-Копировать код
 docker-compose up -d --build
-
 
 windows
 winpty docker exec -it lara_bridge_app bash
 composer install
 composer update
-you can use artisan 
 
-4️⃣ Установите зависимости Laravel linux
-docker-compose exec app composer install
+Linux
+docker exec -it lara_bridge_app bash
+composer install
+composer update
 
-5️⃣ Сгенерируйте ключ приложения
-docker-compose exec app php artisan key:generate
+И Сгенерируйте ключ приложения
+php artisan key:generate
+
+дать права доступа
+1 - cd laravel 
+2 - sudo chmod -R 777 storage bootstrap/cache
+
+Миграции не забудь иначе ошибка будет 500
+docker exec -it lara_bridge_app bash
+php artisan migrate
+
+не забудь сразу и сиды
+php artisan db:seed
 
 ```
 
