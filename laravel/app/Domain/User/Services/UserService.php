@@ -34,15 +34,4 @@ class UserService
 		return $this->users->find($id);
 	}
 
-	public function getUsers(array $filters): array
-	{
-		$users = $this->users->findByFilters($filters);
-
-		if ($users->isEmpty()) {
-			throw new \DomainException("Пользователи не найдены");
-			
-		}
-
-		return $users;
-	}
 }   

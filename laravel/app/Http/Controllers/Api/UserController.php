@@ -30,6 +30,8 @@ class UserController
             throw new ModelNotFoundException('No users Found.');
         }
 
+        // $user = User::shouldGiveAllUsers()
+
         return ApiResponse::success(
             UserResource::collection($users),
             'users list retrieved successfully'
