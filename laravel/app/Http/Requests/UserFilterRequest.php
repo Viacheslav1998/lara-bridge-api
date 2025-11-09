@@ -65,10 +65,6 @@ class UserFilterRequest extends FormRequest
                 'email' => ['required', 'string', 'max:255'],
                 'bio' => ['required', 'string'],                
             ],
-            'GET' => [
-                'country' => ['nullable', 'string', 'size:2'],
-                'active' => ['nullable', 'boolean']
-            ],
             default => [],
         };
     }
