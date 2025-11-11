@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Domain\User\Services\UserService;
+use App\Domain\User\Repositories\UserRepository;
 use App\Http\Requests\UserFilterRequest;
 use App\Http\Resources\UserResource;
 use App\Http\Responses\ApiResponse;
@@ -19,21 +20,17 @@ class UserController
     }
 
     /**
-     * Get all Users / filters / need REFACTOR!
+     * Get all Users 
      */
-    public function index(UserFilterRequest $request)
+    public function index(UserRepository $userRepository)
     {
-        $filters = $request->validated();
-        $users = $this->userService->findUsersByFilters($filters);
+        $users = $userRepository->getUsers();
 
-        if ($users->isEmpty()) {
+        if($users->isEmpty()) {
             throw new ModelNotFoundException('No users Found.');
         }
 
-        // $user = User::shouldGiveAllUsers()
-
-        return ApiResponse::success(
-            UserResource::collection($users),
+        return ApiResponse::success(UserResource::collection($users),
             'users list retrieved successfully'
         );
     }

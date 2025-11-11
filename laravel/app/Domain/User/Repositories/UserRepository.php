@@ -4,51 +4,53 @@ namespace App\Domain\User\Repositories;
 
 use App\Domain\User\Entities\User;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Database\Eloquent\Collection;
 
 class UserRepository
 {
-        // Eloquent
 
-        public function findByFilters(array $filters)
-        {
-            $query = User::query();
+    public function getUsers(): Collection
+    {
+        return User::all();
+    }
 
-            $query->where(function ($q) use ($filters) {
-                if (isset($filters['country'])) {
-                    $q->orWhere('country', $filters['country']);
-                }
-                if (isset($filters['email'])) {
-                    $q->orWhere('email', $filters['email']);
-                }
-                if (isset($filters['first_name'])) {
-                    $q->orWhere('first_name', $filters['first_name']);
-                }
-            });
+    public function findByFilters(array $filters)
+    {
+        $query = User::query();
 
-            return $query->get();
-        }
+        $query->where(function ($q) use ($filters) {
+            if (isset($filters['country'])) {
+                $q->orWhere('country', $filters['country']);
+            }
+            if (isset($filters['email'])) {
+                $q->orWhere('email', $filters['email']);
+            }
+            if (isset($filters['first_name'])) {
+                $q->orWhere('first_name', $filters['first_name']);
+            }
+        });
 
-        public function count(): int
-        {
-            return User::query()->count();
-        }
+        return $query->get();
+    }
 
-        public function find($id)
-        {
-            return User::findOrFail($id);
-        }
+    public function count(): int
+    {
+        return User::query()->count();
+    }
 
-        public function save()
-        {
-            
-        }
+    public function find($id)
+    {
+        return User::findOrFail($id);
+    }
 
-        public function all_x() 
-        {
-            return User::query()->paginate(10);
-        } 
+    public function save()
+    {
+        
+    }
 
-        // Query-Builder  
-    
+    public function all_x() 
+    {
+        return User::query()->paginate(10);
+    } 
 
 }
