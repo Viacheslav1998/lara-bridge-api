@@ -5,6 +5,7 @@ namespace App\Domain\User\Repositories;
 use App\Domain\User\Entities\User;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Request;
 
 class UserRepository
 {
@@ -43,9 +44,9 @@ class UserRepository
         return User::findOrFail($id);
     }
 
-    public function save()
+    public function save(Request $request)
     {
-        
+        return $request->all();
     }
 
     public function all_x() 
