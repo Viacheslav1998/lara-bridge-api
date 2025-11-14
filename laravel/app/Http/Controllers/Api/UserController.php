@@ -40,7 +40,7 @@ class UserController
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

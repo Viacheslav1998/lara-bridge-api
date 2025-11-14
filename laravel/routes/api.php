@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Analytics\UserAnalyticsController;
 
-// tests
+// tests and logs
 Route::get('/test-log', function() {
   Log::error('test logger');
   return 200;
 });
 
+// requests area
 Route::POST('/test-get-data', function(Request $request) {
 	return $request->all();
 });
@@ -36,6 +37,6 @@ Route::Resource('/users', UserController::class);
 
 /**
  * =======
- * Filters
+ * Filters [country, first_name, email]
  */
 Route::get('/user-filter', [UserController::class, 'filter']);

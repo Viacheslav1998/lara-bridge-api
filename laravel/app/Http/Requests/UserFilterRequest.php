@@ -29,11 +29,11 @@ class UserFilterRequest extends FormRequest
             'email.required' => 'Email обязателен.',
             'email.email' => 'Некорректный формат email.',
             'email.unique' => 'Такой email уже зарегистрирован.',
-            'phone.unique' => 'телефон обязателен для заполнения.',
-            'number.unique' => 'номер обязателен для заполнения.',
-            'super.unique' => 'поле супер обязательно для заполнения.',
-            'bio.unique' => 'о себе обязательно для заполнения.',
-            'country.unique' => 'город обязательно для заполнения.',
+            'phone.unique' => 'Такой телефон уже есть!',
+            'number.unique' => 'такой номер уже есть!',
+            'super.unique' => 'Поле Super уже существует',
+            'bio.required' => 'Ты ничего не написал о себе! это важно заполни поле!',
+            'country.required' => 'Город тоже нужно выбрать!',
         ];
     }
 

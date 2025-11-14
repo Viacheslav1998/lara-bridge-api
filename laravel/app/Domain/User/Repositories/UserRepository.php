@@ -44,10 +44,10 @@ class UserRepository
         return User::findOrFail($id);
     }
 
-    public function save(Request $request)
+    public function create(array $data)
     {
-        return $request->all();
-    }
+        return User::create($data);
+    } 
 
     public function all_x() 
     {
