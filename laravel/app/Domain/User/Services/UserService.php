@@ -9,8 +9,9 @@ class UserService
 { 
 	private $allowedFilters = ['country', 'first_name', 'email'];
 
-	public function __construct(protected UserRepository $users) 
-	{	}
+	public function __construct(
+		protected UserRepository $repository
+	) {}
 
 	public function findUsersByFilters(array $filters)
 	{
@@ -21,17 +22,22 @@ class UserService
 			throw new InvalidFilterException("Invaid filter: '{$InvalidFilterName}' . Allowed filters are: " . implode(', ', $this->allowedFilters));
 		}
 
-		return $this->users->findByFilters($filters);
+		return $this->repository->findByFilters($filters);
 	}
 
 	public function getUsersCount()
 	{
-		return $this->user->count();
+		return $this->repository->count();
 	}
 
 	public function getCurrentUser($id)
 	{
-		return $this->users->find($id);
+		return $this->repository->find($id);
+	}
+
+	public function createUser(array $data)
+	{
+		return $this->repository->create($data);
 	}
 
 }   
