@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Api;
 use App\Domain\User\Services\UserService;
 use App\Domain\User\Repositories\UserRepository;
 use App\Http\Requests\UserFilterRequest;
+use App\Http\Requests\CreateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Http\Responses\ApiResponse;
 use App\Actions\User\GetUsersCountAction;
 use App\Actions\User\FilterUsersAction;
+use App\Actions\User\CreateUserAction;
 use Illuminate\Http\Request;
 
 class UserController
@@ -38,9 +40,14 @@ class UserController
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateUserRequest $request, CreateUserAction $action)
     {
-        
+        $user = $action->execute($request->validate());
+
+        return ApiResponse::success(
+            new UserResource($user),
+            'User created successfully'
+        );
     }
 
     /**
