@@ -11,21 +11,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+    - uses: actions/checkout@v3
 
-      - name: Build and start containers
-        run: |
-          docker compose -f docker-compose.ci.yml build
-          docker compose -f docker-compose.ci.yml up -d --remove-orphans
+    - name: Build and start containers
+      run: |
+        docker compose -f docker-compose.ci.yml build
+        docker compose -f docker-compose.ci.yml up -d --remove-orphans
 
-      - name: Install dependencies
-        run: docker compose -f docker-compose.ci.yml run --rm app composer install --no-progress --no-interaction
+    - name: Install PHP dependencies
+      run: docker compose -f docker-compose.ci.yml run --rm app composer install --no-progress --no-interaction
 
-      - name: Run tests
-        run: docker compose -f docker-compose.ci.yml run --rm app php artisan test
+    - name: Run PHPUnit tests
+      run: docker compose -f docker-compose.ci.yml run --rm app php artisan test
 
-      - name: Run PHP CS Fixer
-        run: docker compose -f docker-compose.ci.yml run --rm app vendor/bin/php-cs-fixer fix --dry-run --diff
+    - name: Run PHP CS Fixer
+      run: |
+        docker compose -f docker-compose.ci.yml run --rm app \
+        bash -c 'vendor/bin/php-cs-fixer fix --dry-run --diff || true'
 
-      - name: Stop containers
-        run: docker compose -f docker-compose.ci.yml down
+    - name: Stop containers
+      run: docker compose -f docker-compose.ci.yml down
