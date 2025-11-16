@@ -9,7 +9,7 @@ class UserService
 { 
 
 	private $allowedFilters = ['country', 'first_name', 'email'];
-			
+
 	public function __construct(
 		protected UserRepository $repository
 	) {}
@@ -30,7 +30,7 @@ class UserService
 	{
 		return $this->repository->count();
 	}
-
+	-	-	-
 	public function getCurrentUser($id)
 	{
 		return $this->repository->find($id);
