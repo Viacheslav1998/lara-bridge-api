@@ -2,13 +2,12 @@
 
 namespace App\Exceptions;
 
-use Throwable;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use App\Http\Responses\ApiResponse;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Validation\ValidationException;
+use Throwable;
 
 class Handler extends ExceptionHandler
 {

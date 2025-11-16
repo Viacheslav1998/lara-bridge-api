@@ -8,7 +8,8 @@ class CreateUserAction
 {
     public function __construct(
         private UserService $service
-    ) {}
+    ) {
+    }
 
     public function execute(array $data)
     {

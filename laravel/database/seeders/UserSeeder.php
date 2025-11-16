@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Domain\User\Entities\User;
+use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
 {

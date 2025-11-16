@@ -2,37 +2,37 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Domain\User\Services\UserService;
+use App\Actions\User\CreateUserAction;
+use App\Actions\User\FilterUsersAction;
 use App\Domain\User\Repositories\UserRepository;
-use App\Http\Requests\UserFilterRequest;
+use App\Domain\User\Services\UserService;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Http\Responses\ApiResponse;
-use App\Actions\User\GetUsersCountAction;
-use App\Actions\User\FilterUsersAction;
-use App\Actions\User\CreateUserAction;
 use Illuminate\Http\Request;
 
 class UserController
 {
     protected $userService;
 
-    public function __construct(UserService $userService) {
+    public function __construct(UserService $userService)
+    {
         $this->userService = $userService;
     }
 
     /**
-     * Get all Users 
+     * Get all Users
      */
     public function index(UserRepository $userRepository)
     {
         $users = $userRepository->getUsers();
 
-        if($users->isEmpty()) {
+        if ($users->isEmpty()) {
             throw new ModelNotFoundException('No users Found.');
         }
 
-        return ApiResponse::success(UserResource::collection($users),
+        return ApiResponse::success(
+            UserResource::collection($users),
             'users list retrieved successfully'
         );
     }
@@ -47,7 +47,6 @@ class UserController
         return ApiResponse::success(
             new UserResource($user),
             'User created successfully'
-
         );
     }
 
@@ -56,8 +55,8 @@ class UserController
      */
     public function show(string $id)
     {
-        //  
-            
+        //
+
     }
 
     /**

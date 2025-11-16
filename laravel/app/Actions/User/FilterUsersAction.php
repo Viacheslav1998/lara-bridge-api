@@ -8,7 +8,7 @@ class FilterUsersAction
 {
     protected UserRepository $repository;
 
-    public function __construct(UserRepository $repository) 
+    public function __construct(UserRepository $repository)
     {
         $this->repository = $repository;
     }
@@ -19,6 +19,6 @@ class FilterUsersAction
     public function execute(array $filters)
     {
         return $this->repository->findByFilters($filters);
-    } 
+    }
 
 }

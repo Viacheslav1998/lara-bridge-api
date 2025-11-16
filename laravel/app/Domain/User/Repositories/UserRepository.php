@@ -1,15 +1,12 @@
-<?php 
+<?php
 
 namespace App\Domain\User\Repositories;
 
 use App\Domain\User\Entities\User;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
 
 class UserRepository
 {
-
     public function getUsers(): Collection
     {
         return User::all();
@@ -47,11 +44,11 @@ class UserRepository
     public function create(array $data)
     {
         return User::create($data);
-    } 
+    }
 
-    public function all_x() 
+    public function all_x()
     {
         return User::query()->paginate(10);
-    } 
+    }
 
 }

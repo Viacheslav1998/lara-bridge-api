@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Actions\User;
 
@@ -9,9 +9,10 @@ use App\Domain\User\Repositories\UserRepository;
  */
 class GetUsersCountAction
 {
-    function __construct(
-      UserRepository $userRepository
-    ) {}
+    public function __construct(
+        UserRepository $userRepository
+    ) {
+    }
 
     public function execute(): int
     {

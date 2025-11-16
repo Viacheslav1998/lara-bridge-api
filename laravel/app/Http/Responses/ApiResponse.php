@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 namespace App\Http\Responses;
 
@@ -6,16 +6,16 @@ use Illuminate\Http\JsonResponse;
 
 class ApiResponse
 {
-	public static function success($data, string $message = "OK", int $code = 200): JsonResponse
-	{
-		return response()->json([
-			'status' => 'success',
-			'message' => $message,
-			'data' => $data,
-		], $code);	
-	}
+    public static function success($data, string $message = 'OK', int $code = 200): JsonResponse
+    {
+        return response()->json([
+            'status' => 'success',
+            'message' => $message,
+            'data' => $data,
+        ], $code);
+    }
 
-	  public static function error(string $message = 'Error', int $code = 400, $errors = null): JsonResponse
+    public static function error(string $message = 'Error', int $code = 400, $errors = null): JsonResponse
     {
         return response()->json([
             'status' => 'error',
@@ -30,13 +30,13 @@ class ApiResponse
     }
 
 
-    public static function serverError(string $message = 'Internal Error Server', $errors = ["Server Error"]): JsonResponse 
+    public static function serverError(string $message = 'Internal Error Server', $errors = ['Server Error']): JsonResponse
     {
-    	return response()->json([
-    		'status' => 'error',
-    		'message' => $message,
-    		'errors' => $errors
-    	], 500);
+        return response()->json([
+            'status' => 'error',
+            'message' => $message,
+            'errors' => $errors
+        ], 500);
     }
 
     public static function unauthorized(string $message = 'Unauthorized'): JsonResponse
