@@ -1,0 +1,12 @@
+#!/bin/sh
+
+echo "🧹 PHP-CS-Fixer..."
+
+docker compose exec -T php-container vendor/bin/php-cs-fixer fix --config=/var/www/html/.php-cs-fixer.dist.php --allow-risky=yes
+
+if [ $? -ne 0 ]; then
+    echo "❌ PHP-CS-Fixer нашёл ошибки. Закоммить и повтори push."
+    exit 1
+fi
+
+echo "✅ Всё чисто!"
