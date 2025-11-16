@@ -13,25 +13,27 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    # Устанавливаем Docker Compose
-    - name: Install Docker Compose
+    # Проверяем Docker
+    - name: Check Docker version
+      run: docker --version
+
+    - name: Check Docker Compose version
+      run: docker compose version
+
+    # Собираем и запускаем контейнеры
+    - name: Build and Run Containers
       run: |
-        sudo apt update
-        sudo apt install -y docker-compose
+        docker compose -f docker-compose.yml build
+        docker compose -f docker-compose.yml up -d
 
-    # Собираем контейнеры
-    - name: Build Docker Compose
-      run: docker-compose -f docker-compose.yml build
-
-    # Запускаем контейнеры
-    - name: Run Docker Compose
-      run: docker-compose -f docker-compose.yml up -d
-      run: docker-compose run --rm app composer install --no-progress --no-interaction
+    # Устанавливаем зависимости Laravel
+    - name: Install PHP dependencies
+      run: docker compose run --rm app composer install --no-progress --no-interaction
 
     # Запускаем тесты
     - name: Run tests
-      run: docker-compose run --rm app php artisan test
+      run: docker compose run --rm app php artisan test
 
-    # Проверяем код линтером (если есть)
+    # Проверяем код php-cs-fixer
     - name: Code style check
-      run: docker-compose run --rm app vendor/bin/php-cs-fixer fix --dry-run --diff
+      run: docker compose run --rm app vendor/bin/php-cs-fixer fix --dry-run --diff
