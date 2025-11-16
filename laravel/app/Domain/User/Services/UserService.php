@@ -30,15 +30,15 @@ class UserService
 	{
 		return $this->repository->count();
 	}
-
+				
 	public function getCurrentUser($id)
 	{
-		return $this->repository->find($id);
+			return $this->repository->find($id);
 	}
 
 	public function createUser(array $data)
 	{
-		return $this->repository->create($data);
+			return $this->repository->create($data);
 	}
 
 	public function tttt()

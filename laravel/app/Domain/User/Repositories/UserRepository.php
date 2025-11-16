@@ -9,7 +9,7 @@ class UserRepository
 {
     public function getUsers(): Collection
     {
-        return User::all();
+            return User::all();
     }
 
     public function findByFilters(array $filters)
