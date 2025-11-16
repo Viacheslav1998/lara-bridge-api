@@ -1,40 +1,23 @@
-name: Laravel CI
+version: "3.8"
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+services:
+  app:
+    build:
+      context: ./php
+    working_dir: /var/www
+    volumes:
+      - ./laravel:/var/www
+    networks:
+      - lara_bridge_net
 
-jobs:
-  ci:
-    runs-on: ubuntu-latest
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: laravel
+      POSTGRES_PASSWORD: laravel
+      POSTGRES_DB: laravel
+    networks:
+      - lara_bridge_net
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: Check Docker version
-      run: docker --version
-
-    - name: Check Docker Compose version
-      run: docker compose version
-
-    - name: Build and start containers
-      run: |
-        docker compose -f docker-compose.ci.yml build
-        docker compose -f docker-compose.ci.yml up -d --remove-orphans
-
-    - name: Install PHP dependencies
-      run: docker compose -f docker-compose.ci.yml run --rm app composer install --no-progress --no-interaction
-
-    - name: Run PHPUnit tests
-      run: docker compose -f docker-compose.ci.yml run --rm app php artisan test
-
-    - name: Run PHP CS Fixer
-      run: |
-        docker compose -f docker-compose.ci.yml run --rm app \
-          bash -c 'if [ -d ./app ]; then vendor/bin/php-cs-fixer fix --dry-run --diff; fi'
-
-    - name: Stop containers
-      run: docker compose -f docker-compose.ci.yml down
+networks:
+  lara_bridge_net:
