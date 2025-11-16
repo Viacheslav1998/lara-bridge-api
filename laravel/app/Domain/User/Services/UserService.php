@@ -7,7 +7,6 @@ use App\Exceptions\InvalidFilterException;
 
 class UserService 
 { 
-
 	private $allowedFilters = ['country', 'first_name', 'email'];
 
 	public function __construct(
@@ -16,11 +15,11 @@ class UserService
 
 	public function findUsersByFilters(array $filters)
 	{
-		$InvalidFilters = array_diff(array_keys($filters), $this->allowedFilters);
+			$InvalidFilters = array_diff(array_keys($filters), $this->allowedFilters);
 
 		if (!empty($InvalidFilters)) {
 			$InvalidFilterName = reset($InvalidFilters);
-			throw new InvalidFilterException("Invaid filter: '{$InvalidFilterName}' . Allowed filters are: " . implode(', ', $this->allowedFilters));
+				throw new InvalidFilterException("Invaid filter: '{$InvalidFilterName}' . Allowed filters are: " . implode(', ', $this->allowedFilters));
 		}
 
 		return $this->repository->findByFilters($filters);
@@ -28,20 +27,22 @@ class UserService
 
 	public function getUsersCount()
 	{
-		return $this->repository->count();
+			return $this->repository->count();
 	}
-				
+		public function sssss()
+	{
+				return $this->repository->count();
+	}
+
+
 	public function getCurrentUser($id)
 	{
-			return $this->repository->find($id);
+		return $this->repository->find($id);
 	}
 
 	public function createUser(array $data)
 	{
-			return $this->repository->create($data);
+		return $this->repository->create($data);
 	}
-
-	public function tttt()
-	{	return '132';}
 
 }   
