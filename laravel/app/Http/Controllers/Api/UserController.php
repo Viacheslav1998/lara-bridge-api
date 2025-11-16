@@ -47,6 +47,7 @@ class UserController
         return ApiResponse::success(
             new UserResource($user),
             'User created successfully'
+
         );
     }
 
@@ -55,7 +56,8 @@ class UserController
      */
     public function show(string $id)
     {
-        //
+        //  
+            
     }
 
     /**
