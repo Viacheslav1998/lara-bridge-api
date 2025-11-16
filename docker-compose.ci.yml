@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  app:
+    build:
+      context: ./php
+    working_dir: /var/www
+    volumes:
+      - ./laravel:/var/www
+    networks:
+      - lara_bridge_net
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: laravel
+      POSTGRES_PASSWORD: laravel
+      POSTGRES_DB: laravel
+    networks:
+      - lara_bridge_net
+
+networks:
+  lara_bridge_net:
