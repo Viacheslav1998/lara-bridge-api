@@ -20,20 +20,20 @@ jobs:
     - name: Check Docker Compose version
       run: docker compose version
 
-    # Собираем и запускаем контейнеры
-    - name: Build and Run Containers
+    # Собираем и запускаем контейнеры для CI
+    - name: Build and Run CI Containers
       run: |
-        docker compose -f docker-compose.yml build
-        docker compose -f docker-compose.yml up -d
+        docker compose -f docker-compose.ci.yml build
+        docker compose -f docker-compose.ci.yml up -d
 
     # Устанавливаем зависимости Laravel
     - name: Install PHP dependencies
-      run: docker compose run --rm app composer install --no-progress --no-interaction
+      run: docker compose -f docker-compose.ci.yml run --rm app composer install --no-progress --no-interaction
 
     # Запускаем тесты
     - name: Run tests
-      run: docker compose run --rm app php artisan test
+      run: docker compose -f docker-compose.ci.yml run --rm app php artisan test
 
     # Проверяем код php-cs-fixer
     - name: Code style check
-      run: docker compose run --rm app vendor/bin/php-cs-fixer fix --dry-run --diff
+      run: docker compose -f docker-compose.ci.yml run --rm app vendor/bin/php-cs-fixer fix --dry-run --diff
