@@ -1,23 +1,23 @@
 <?php
 
 $finder = PhpCsFixer\Finder::create()
-    ->notPath('bootstrap/*')
-    ->notPath('storage/*')
-    ->notPath('vendor/*')
-    ->in(__DIR__)
-    ->name('*.php')
-    ->notName('*.blade.php')
-    ->ignoreDotFiles(true)
-    ->ignoreVCS(true);
+    ->in([
+        __DIR__ . '/app',
+        __DIR__ . '/routes',
+        __DIR__ . '/config',
+        __DIR__ . '/resources',
+    ])
+    ->exclude(['vendor']);
 
-return (new PhpCsFixer\Config())
-    ->setIndent("    ") 
-    ->setUsingCache(true)
+return PhpCsFixer\Config::create()
     ->setRules([
         '@PSR12' => true,
         'array_syntax' => ['syntax' => 'short'],
-        'ordered_imports' => ['sort_algorithm' => 'alpha'],
-        'no_unused_imports' => true,
-        'indentation_type' => true, 
+        'no_trailing_whitespace' => true,
+        'single_quote' => true,
+        'indentation_type' => true,
+        'trailing_comma_in_multiline' => true,
+        'no_extra_blank_lines' => ['tokens' => ['extra']],
     ])
-    ->setFinder($finder);
+    ->setFinder($finder)
+    ->setRiskyAllowed(true);
