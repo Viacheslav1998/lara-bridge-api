@@ -30,7 +30,7 @@ class UserService
 	{
 		return $this->repository->count();
 	}
-	-	-	-
+	
 	public function getCurrentUser($id)
 	{
 		return $this->repository->find($id);
