@@ -52,7 +52,7 @@ class ApiResponse
 
     public function sx()
     {
-             return 's13';
+        return 's13';
     }
 
 }
