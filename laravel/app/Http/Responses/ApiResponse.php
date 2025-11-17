@@ -49,4 +49,8 @@ class ApiResponse
         return self::error($message, 422, $errors);
     }
 
+    public function x() {}
+    public function ss()
+    { return '123'}
+
 }
