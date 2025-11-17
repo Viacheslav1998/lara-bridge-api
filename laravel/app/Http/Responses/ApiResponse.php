@@ -55,4 +55,9 @@ class ApiResponse
         return 's13';
     }
 
+    public function action()
+    {
+        echo 'you can see only my commit';
+    }
+
 }
