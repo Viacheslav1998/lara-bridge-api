@@ -49,15 +49,4 @@ class ApiResponse
         return self::error($message, 422, $errors);
     }
 
-
-    public function sx()
-    {
-        return 's13';
-    }
-
-    public function action()
-    {
-        echo 'you can see only my commit';
-    }
-
 }
