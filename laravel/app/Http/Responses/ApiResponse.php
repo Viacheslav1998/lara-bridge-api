@@ -51,7 +51,7 @@ class ApiResponse
 
     public function state()
     {
-        return        '123';
+        return '123';
     }
 
 }
