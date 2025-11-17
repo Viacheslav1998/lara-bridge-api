@@ -33,14 +33,14 @@ class ApiResponse
     public static function serverError(string $message = 'Internal Error Server', $errors = ['Server Error']): JsonResponse
     {
         return response()->json([
-            'status' => 'error',
+                'status' => 'error',
             'message' => $message,
-                'errors' => $errors
+                    'errors' => $errors
         ], 500);
-    }
+        }
 
     public static function unauthorized(string $message = 'Unauthorized'): JsonResponse
-    {
+        {
             return self::error($message, 401);
     }
 
