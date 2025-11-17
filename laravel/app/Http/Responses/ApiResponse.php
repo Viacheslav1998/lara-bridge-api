@@ -49,9 +49,5 @@ class ApiResponse
         return self::error($message, 422, $errors);
     }
 
-    public function state()
-    {
-        return '123';
-    }
 
 }
