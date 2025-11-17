@@ -254,3 +254,15 @@ volumes:
   lara_bridge_pgdata:
 
 ```
+
+```
+Установлен PHP-CS-Fixer
+проверка ошибок/стиля кода:
+для этого нужно cd laravel там запускать:
+
+// что бы проверить
+php ./php-cs-fixer fix --dry-run --diff
+
+// используем для исправления - если не работает git push
+php ./php-cs-fixer fix 
+```

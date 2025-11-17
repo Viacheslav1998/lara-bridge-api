@@ -49,9 +49,4 @@ class ApiResponse
         return self::error($message, 422, $errors);
     }
 
-    public function last()
-    {
-        echo   '132';
-    }
-
 }
