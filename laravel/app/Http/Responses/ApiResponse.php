@@ -35,18 +35,18 @@ class ApiResponse
         return response()->json([
             'status' => 'error',
             'message' => $message,
-            'errors' => $errors
+                'errors' => $errors
         ], 500);
     }
 
     public static function unauthorized(string $message = 'Unauthorized'): JsonResponse
     {
-        return self::error($message, 401);
+            return self::error($message, 401);
     }
 
     public static function validationError($errors, string $message = 'Validation failed'): JsonResponse
     {
-        return self::error($message, 422, $errors);
+                return self::error($message, 422, $errors);
     }
 
 }
