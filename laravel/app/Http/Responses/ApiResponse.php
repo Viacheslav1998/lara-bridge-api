@@ -49,8 +49,7 @@ class ApiResponse
         return self::error($message, 422, $errors);
     }
 
-    public func aa() {
-                return 's';
-    }
+    public funssc aa() {
+         rs
 
 }
