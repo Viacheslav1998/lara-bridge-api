@@ -1,13 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 
-ROOT_DIR=$(pwd)
+# define root
+ROOT_DIR=$(git rev-parse --show-toplevel)
 LARAVEL_DIR="$ROOT_DIR/laravel"
 
+# check PHP-CS-Fixer (dry-run)
 echo "-------------------------------------"
-echo "Running PHP-CS-Fixer (dry-run check)"
+echo "Checking PHP code style (dry-run)..."
 echo "-------------------------------------"
 
-docker-compose run --rm php php-cs-fixer fix \
+# --dry-run shows files that need to be fixed
+php "$LARAVEL_DIR/vendor/bin/php-cs-fixer" fix \
     --config="$LARAVEL_DIR/php-cs-fixer.dist.php" \
     --dry-run --diff
 
@@ -16,7 +19,8 @@ echo "-------------------------------------"
 echo "Fixing PHP code style..."
 echo "-------------------------------------"
 
-docker-compose run --rm php php-cs-fixer fix \
+# Fix it right now!
+php "$LARAVEL_DIR/vendor/bin/php-cs-fixer" fix \
     --config="$LARAVEL_DIR/php-cs-fixer.dist.php"
 
 echo ""
