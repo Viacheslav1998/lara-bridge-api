@@ -49,8 +49,9 @@ class ApiResponse
         return self::error($message, 422, $errors);
     }
 
-    public function x() {}
-    public function ss()
-    { return '123'}
+    public function CsOsa12()
+    {
+            return  'spaceeea'
+    }
 
 }
