@@ -34,7 +34,7 @@ Route::prefix('analytics')->group(function () {
 
 
 // Resource | CRUD
-Route::Resource('/users', UserController::class);
+Route::apiResource('/users', UserController::class);
 
 /**
  * =======
