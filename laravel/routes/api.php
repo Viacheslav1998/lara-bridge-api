@@ -2,8 +2,8 @@
 
 
 use App\Http\Controllers\Analytics\UserAnalyticsController;
-use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\SpaceTestAttentionController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
@@ -43,5 +43,3 @@ Route::apiResource('/spaces', SpaceTestAttentionController::class);
  * Filters [country, first_name, email]
  */
 Route::get('/user-filter', [UserController::class, 'filter']);
-
-
