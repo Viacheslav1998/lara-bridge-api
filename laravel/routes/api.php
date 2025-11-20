@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\Analytics\UserAnalyticsController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\SpaceTestAttentionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
@@ -35,9 +36,12 @@ Route::prefix('analytics')->group(function () {
 
 // Resource | CRUD
 Route::apiResource('/users', UserController::class);
+Route::apiResource('/spaces', SpaceTestAttentionController::class);
 
 /**
  * =======
  * Filters [country, first_name, email]
  */
 Route::get('/user-filter', [UserController::class, 'filter']);
+
+
