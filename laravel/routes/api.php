@@ -1,6 +1,5 @@
 <?php
 
-
 use App\Http\Controllers\Analytics\UserAnalyticsController;
 use App\Http\Controllers\Api\SpaceTestAttentionController;
 use App\Http\Controllers\Api\UserController;
@@ -14,7 +13,7 @@ Route::get('/test-log', function () {
     return 200;
 });
 
-// requests area
+// requests test area
 Route::POST('/test-get-data', function (Request $request) {
     return $request->all();
 });
@@ -33,11 +32,11 @@ Route::prefix('analytics')->group(function () {
     // ...
 });
 
-
 // Resource | CRUD
-Route::apiResource('/users', UserController::class);
-Route::apiResource('/spaces', SpaceTestAttentionController::class);
-
+Route::apiResource([
+    '/users', UserController::class, 
+    '/spaces', SpaceTestAttentionController::class
+]);
 
 /**
  * =======
