@@ -33,9 +33,9 @@ Route::prefix('analytics')->group(function () {
 });
 
 // Resource | CRUD
-Route::apiResource([
-    '/users', UserController::class, 
-    '/spaces', SpaceTestAttentionController::class
+Route::apiResources([
+    'users' => UserController::class,
+    'spaces' => SpaceTestAttentionController::class
 ]);
 
 /**
