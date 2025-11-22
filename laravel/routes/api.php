@@ -3,7 +3,6 @@
 use App\Http\Controllers\Analytics\UserAnalyticsController;
 use App\Http\Controllers\Api\SpaceTestAttentionController;
 use App\Http\Controllers\Api\UserController;
-// use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
@@ -12,11 +11,6 @@ Route::get('/test-log', function () {
     Log::error('test logger');
     return 200;
 });
-
-// requests test area
-// Route::POST('/test-get-data', function (Request $request) {
-//     return $request->all();
-// });
 
 Route::get('/', function () {
     return [
