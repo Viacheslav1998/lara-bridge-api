@@ -50,7 +50,7 @@ class CreateUserRequest extends FormRequest
             'phone'      => ['required', 'string'],
             'number'     => ['required'],
             'super'      => ['required'],
-            'email'      => ['required', 'email', 'max:255', 'unique:users,email'],
+            'email'      => ['required', 'email', 'max:255', 'unique:users,email'] ,
             'bio'        => ['required', 'string'],
         ];
     }

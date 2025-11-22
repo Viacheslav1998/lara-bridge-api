@@ -9,7 +9,6 @@ use App\Domain\User\Services\UserService;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Http\Responses\ApiResponse;
-use Illuminate\Http\Request;
 
 class UserController
 {
@@ -42,13 +41,16 @@ class UserController
      */
     public function store(CreateUserRequest $request, CreateUserAction $action)
     {
-        $user = $action->execute($request->validate());
+        $validatedData = $request->validated();
+
+        $user = $action->execute($request->validated());
 
         return ApiResponse::success(
             new UserResource($user),
             'User created successfully'
         );
     }
+
 
     /**
      * Display the specified resource.
