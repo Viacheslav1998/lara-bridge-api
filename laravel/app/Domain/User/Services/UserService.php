@@ -41,9 +41,10 @@ class UserService
         return $this->repository->create($data);
     }
 
-    public function updateCurrentUser(int $id)
+    public function updateCurrentUser(int $userId, array $data): User
     {
-        return $this->repository->update($id);
+        $user = $this->repository->findById($userId);
+        return $this->repository->update($user, $data);
     }
 
 }
