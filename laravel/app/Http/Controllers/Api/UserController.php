@@ -9,6 +9,7 @@ use App\Domain\User\Entities\User;
 use App\Domain\User\Repositories\UserRepository;
 use App\Domain\User\Services\UserService;
 use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Http\Responses\ApiResponse;
 
@@ -69,7 +70,7 @@ class UserController
      */
     public function update(UpdateUserRequest $request, User $user, UpdateUserAction $action)
     {
-        $updatedUser = action->execute($request->validated(), $user->id);
+        $updatedUser = $action->execute($request->validated(), $user->id);
 
         return ApiResponse::success(
             new UserResource($updatedUser),
