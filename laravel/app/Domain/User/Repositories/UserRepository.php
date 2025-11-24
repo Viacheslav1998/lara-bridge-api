@@ -36,22 +36,31 @@ class UserRepository
         return User::query()->count();
     }
 
-    public function find(int $id)
+    public function find(int $id): User
+    {
+        return User::find($id);
+    }
+
+    public function findById(int $id): User
     {
         return User::findOrFail($id);
     }
 
-    public function update(int $id)
+    /**
+     * Attention 
+     * you can use User::updateOrCreate
+     */
+    public function update(array $data): User
     {
-        return User::findOrFail($id);
+        return User::update($data);
     }
 
-    public function create(array $data)
+    public function create(array $data): User
     {
         return User::create($data);
     }
 
-    public function all_x()
+    public function getChank(): LengthAwarePaginator
     {
         return User::query()->paginate(10);
     }

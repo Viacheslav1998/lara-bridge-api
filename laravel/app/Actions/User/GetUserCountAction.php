@@ -7,7 +7,7 @@ use App\Domain\User\Repositories\UserRepository;
 /**
  * getUsersCountAction
  */
-class GetUsersCountAction
+class GetUserCountAction
 {
     public function __construct(
         UserRepository $userRepository

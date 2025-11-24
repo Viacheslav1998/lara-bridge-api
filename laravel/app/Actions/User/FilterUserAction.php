@@ -4,7 +4,7 @@ namespace App\Actions\User;
 
 use App\Domain\User\Repositories\UserRepository;
 
-class FilterUsersAction
+class FilterUserAction
 {
     protected UserRepository $repository;
 
@@ -14,7 +14,8 @@ class FilterUsersAction
     }
 
     /**
-    * Execute filters users for params
+    * execute filters users for params
+    * without service
     */
     public function execute(array $filters)
     {

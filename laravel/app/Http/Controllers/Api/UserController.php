@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Actions\User\CreateUserAction;
-use App\Actions\User\FilterUsersAction;
+use App\Actions\User\FilterUserAction;
+use App\Actions\User\UpdateUserAction;
 use App\Domain\User\Repositories\UserRepository;
 use App\Domain\User\Services\UserService;
 use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Http\Responses\ApiResponse;
 
@@ -80,7 +82,7 @@ class UserController
     /**
      * Find users using filters
      */
-    public function filter(Request $request, FilterUsersAction $action)
+    public function filter(Request $request, FilterUserAction $action)
     {
         $filters = $request->all();
         $users = $action->execute($filters);

@@ -4,7 +4,7 @@ namespace App\Actions\User;
 
 use App\Domain\User\Services\UserService;
 
-class CreateUserAction
+class UpdateUserAction
 {
     public function __construct(
         private UserService $service
@@ -12,10 +12,10 @@ class CreateUserAction
     }
 
     /**
-    * execute create new user
+    * execute update current user
     */
     public function execute(array $data)
     {
-        return $this->service->createUser($data);
+        return $this->service->updateCurrentUser($data);
     }
 }
