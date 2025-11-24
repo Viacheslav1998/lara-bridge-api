@@ -12,10 +12,11 @@ class UpdateUserAction
     }
 
     /**
-    * execute update current user
-    */
-    public function execute(array $data)
+     * @param array $data request
+     * @param int $userId ID user for update
+     */
+    public function execute(array $data, int $userId)
     {
-        return $this->service->updateCurrentUser($data);
+        return $this->service->updateCurrentUser($userId, $data);
     }
 }
