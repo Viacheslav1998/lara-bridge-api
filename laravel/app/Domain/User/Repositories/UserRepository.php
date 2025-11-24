@@ -50,9 +50,9 @@ class UserRepository
      * Attention!
      * you can use User::updateOrCreate
      * =====
-     * 
+     *
      * update current user, use Eloquent update() method.
-     * 
+     *
      * @param User $user if exists.
      * @param array $data for udpate.
      * @return User updated model.
