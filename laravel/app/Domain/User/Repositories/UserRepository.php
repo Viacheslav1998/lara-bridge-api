@@ -47,7 +47,7 @@ class UserRepository
     }
 
     /**
-     * Attention 
+     * Attention
      * you can use User::updateOrCreate
      */
     public function update(array $data): User
