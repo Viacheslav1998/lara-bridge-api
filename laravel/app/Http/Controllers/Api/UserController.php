@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Actions\User\CreateUserAction;
 use App\Actions\User\FilterUserAction;
+use App\Actions\User\UpdateUserAction;
+use App\Domain\User\Entities\User;
 use App\Domain\User\Repositories\UserRepository;
 use App\Domain\User\Services\UserService;
 use App\Http\Requests\CreateUserRequest;
@@ -63,10 +65,17 @@ class UserController
 
     /**
      * Update the specified resource in storage.
+     * userId = received via Route Bildung model
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateUserRequest $request, User $user, UpdateUserAction $action)
     {
-        $user = $this->action->execute();
+        $updatedUser = action->execute($request->validated(), $user->id);
+
+        return ApiResponse::success(
+            new UserResource($updatedUser),
+            'User was updated successfully'
+        );
+
     }
 
     /**
