@@ -41,4 +41,9 @@ class UserService
         return $this->repository->create($data);
     }
 
+    public function updateCurrentUser(int $id)
+    {
+        return $this->repository->update($id);
+    }
+
 }
