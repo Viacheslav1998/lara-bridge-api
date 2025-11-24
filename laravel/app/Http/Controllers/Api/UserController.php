@@ -66,7 +66,7 @@ class UserController
      */
     public function update(Request $request, string $id)
     {
-        // 
+        //
     }
 
     /**
