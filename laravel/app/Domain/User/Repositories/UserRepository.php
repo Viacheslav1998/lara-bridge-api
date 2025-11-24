@@ -60,9 +60,9 @@ class UserRepository
         return User::create($data);
     }
 
-    public function getChank(): LengthAwarePaginator
+    public function getChank(int $perPage = 10): LengthAwarePaginator
     {
-        return User::query()->paginate(10);
+        return User::query()->paginate($perPage);
     }
 
 }
