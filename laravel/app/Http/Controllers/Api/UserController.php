@@ -82,9 +82,17 @@ class UserController
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
-        //
+        $user = $this->userService->getCurrentUser($id);
+            
+        if (!empty($user)) {
+            $this->userService->destroyUser($id);
+            return apiResponse::success('The user has been successfully deleted.');
+        }
+
+        return apiResponse::error('User not Found!', 404, 'Current User Not Found');
+
     }
 
     /**

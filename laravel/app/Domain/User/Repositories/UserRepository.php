@@ -36,7 +36,7 @@ class UserRepository
         return User::query()->count();
     }
 
-    public function find(int $id): User
+    public function find(int $id)
     {
         return User::find($id);
     }
@@ -44,6 +44,11 @@ class UserRepository
     public function findById(int $id): User
     {
         return User::findOrFail($id);
+    }
+    
+    public function destroy(int $id)
+    {
+        return User::destroy($id);
     }
 
     /**

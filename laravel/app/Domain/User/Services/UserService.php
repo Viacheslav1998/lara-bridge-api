@@ -36,6 +36,13 @@ class UserService
         return $this->repository->find($id);
     }
 
+    public function destroyUser(int $userId)
+    {
+        return $this->repository->destroy($userId);
+        // $user = $this->repository->finById($userId);
+        // return $this->repository->destroy($user);
+    }
+
     public function createUser(array $data)
     {
         return $this->repository->create($data);
