@@ -85,7 +85,7 @@ class UserController
     public function destroy(int $id)
     {
         $user = $this->userService->getCurrentUser($id);
-            
+
         if (!empty($user)) {
             $this->userService->destroyUser($id);
             return apiResponse::success('The user has been successfully deleted.');

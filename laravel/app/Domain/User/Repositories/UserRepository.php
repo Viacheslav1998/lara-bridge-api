@@ -45,7 +45,7 @@ class UserRepository
     {
         return User::findOrFail($id);
     }
-    
+
     public function destroy(int $id)
     {
         return User::destroy($id);
