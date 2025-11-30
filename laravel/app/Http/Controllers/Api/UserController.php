@@ -13,7 +13,6 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Http\Responses\ApiResponse;
 
-
 class UserController
 {
     protected $userService;
