@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Actions\User\CreateUserAction;
 use App\Actions\User\FilterUserAction;
 use App\Actions\User\UpdateUserAction;
@@ -13,7 +12,7 @@ use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Http\Responses\ApiResponse;
-
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UserController
 {

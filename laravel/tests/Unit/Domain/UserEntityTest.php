@@ -9,8 +9,8 @@ class UserEntitiesTest extends TestCase
 {
     public function test_users_name_is_correct()
     {
-        $user = new User("Иван", "ivanExample@example.com");
+        $user = new User('Иван', 'ivanExample@example.com');
 
-        $this->assertEquals("Иван", $user->getName());
+        $this->assertEquals('Иван', $user->getName());
     }
 }
