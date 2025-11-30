@@ -2,16 +2,12 @@
 
 namespace tests\Unit\Domain\Repository;
 
-
 use App\Domain\User\Entities\User;
 use App\Domain\User\Repositories\UserRepository;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Mockery;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
-use Mockery;
-
-
 
 class UserRepositoryTest extends TestCase
 {
