@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Actions\User\CreateUserAction;
 use App\Actions\User\FilterUserAction;
 use App\Actions\User\UpdateUserAction;
@@ -32,7 +31,7 @@ class UserController
         $users = $userRepository->getUsers();
 
         if ($users->isEmpty()) {
-            throw new ModelNotFoundException('No users Found.');
+            throw new \Illuminate\Database\Eloquent\ModelNotFoundException('No users Found.');
         }
 
         return ApiResponse::success(
