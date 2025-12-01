@@ -54,7 +54,7 @@ class UserRepositoryTest extends TestCase
           ->andReturn($user);
     }
 
-    
+
     #[Test]
     public function testFailure(): void
     {
