@@ -42,4 +42,23 @@ class UserRepositoryTest extends TestCase
     }
 
 
+    #[Test]
+    public function it_finds_user_by_id(): void
+    {
+        $mock = Mockery::mock('alias:' . User::class);
+        $user = new User();
+
+        $mock->shouldReceive('find')
+          ->with(1)
+          ->once()
+          ->andReturn($user);
+    }
+
+    
+    #[Test]
+    public function testFailure(): void
+    {
+        $this->assertEquals(1, 0);
+    }
+
 }
