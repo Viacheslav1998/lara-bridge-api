@@ -26,7 +26,6 @@ class UserRepositoryTest extends TestCase
         parent::tearDown();
     }
 
-
     #[Test]
     public function it_calls_all_on_user_model(): void
     {
@@ -63,5 +62,23 @@ class UserRepositoryTest extends TestCase
         // approval
         $this->assertSame($expectedUser, $actualUser);
     }
+
+    #[Test]
+    public function it_throws_exception_if_user_not_found(): void
+    {
+        $mock = Mockery::mock('alias:' . User::class);
+
+        $mock->shouldReceive('findOrFail')
+            ->once()
+            ->withAnyArgs()
+            ->andThrow(\Illuminate\Database\Eloquent\ModelNotFoundException::class);
+
+        $this->expectException(\Illuminate\Database\Eloquent\ModelNotFoundException::class);
+
+        $this->repo->findById(2);
+    }
+
+    // test return false
+
 
 }
