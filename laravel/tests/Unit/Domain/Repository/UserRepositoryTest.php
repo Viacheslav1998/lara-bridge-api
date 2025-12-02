@@ -78,7 +78,17 @@ class UserRepositoryTest extends TestCase
         $this->repo->findById(2);
     }
 
-    // test return false
+    #[Test]
+    public function it_couns_user(): void
+    {
+        $mock = Mockery::mock('alias:' . User::class);
+
+        $mock->shouldReceive('query->count')
+            ->once()
+            ->andReturn(100);
+
+        $this->assertSame(100, $this->repo->count());
+    }
 
 
 }
