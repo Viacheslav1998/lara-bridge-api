@@ -41,7 +41,6 @@ class UserRepositoryTest extends TestCase
         $this->assertSame($collection, $this->repo->getUsers());
     }
 
-
     #[Test]
     public function it_finds_user_by_id(): void
     {
@@ -52,13 +51,6 @@ class UserRepositoryTest extends TestCase
           ->with(1)
           ->once()
           ->andReturn($user);
-    }
-
-
-    #[Test]
-    public function testFailure(): void
-    {
-        $this->assertEquals(1, 0);
     }
 
 }

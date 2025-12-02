@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Analytics\UserAnalyticsController;
-use App\Http\Controllers\Api\SpaceTestAttentionController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
@@ -28,8 +27,7 @@ Route::prefix('analytics')->group(function () {
 
 // Resource | CRUD
 Route::apiResources([
-    'users' => UserController::class,
-    'spaces' => SpaceTestAttentionController::class
+    'users' => UserController::class
 ]);
 
 /**
