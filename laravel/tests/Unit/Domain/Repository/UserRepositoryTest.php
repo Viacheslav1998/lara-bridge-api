@@ -45,7 +45,7 @@ class UserRepositoryTest extends TestCase
     public function if_finds_user_by_id(): void
     {
         // cnfg Alias mocking for calling User::find()
-        $mock = Mockery::mock('alias:'. User::class);
+        $mock = Mockery::mock('alias:' . User::class);
         $expectedUser = new User([
             'id' => 1,
             'name' => 'John'
