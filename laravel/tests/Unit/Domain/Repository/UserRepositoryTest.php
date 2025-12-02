@@ -42,15 +42,26 @@ class UserRepositoryTest extends TestCase
     }
 
     #[Test]
-    public function it_finds_user_by_id(): void
+    public function if_finds_user_by_id(): void
     {
-        $mock = Mockery::mock('alias:' . User::class);
-        $user = new User();
+        // cnfg Alias mocking for calling User::find()
+        $mock = Mockery::mock('alias:'. User::class);
+        $expectedUser = new User([
+            'id' => 1,
+            'name' => 'John'
+        ]);
 
+        // cnfg waiting
         $mock->shouldReceive('find')
-          ->with(1)
-          ->once()
-          ->andReturn($user);
+            ->with(1)
+            ->once()
+            ->andReturn($expectedUser);
+
+        // run test, run method repo[repository]
+        $actualUser = $this->repo->find(1);
+
+        // approval
+        $this->assertSame($expectedUser, $actualUser);
     }
 
 }
