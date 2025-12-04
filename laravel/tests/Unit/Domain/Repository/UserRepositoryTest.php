@@ -90,5 +90,4 @@ class UserRepositoryTest extends TestCase
         $this->assertSame(100, $this->repo->count());
     }
 
-
 }
