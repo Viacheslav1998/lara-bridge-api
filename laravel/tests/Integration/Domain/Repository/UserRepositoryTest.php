@@ -18,10 +18,10 @@ class UserRepositoryTest extends TestCase
         $user = $repo->create([
             'first_name' => 'Jogn',
             'email' => 'Jogn@gmail.com'
-        ]); 
+        ]);
 
         $this->assertDatabaseHas('users', [
-            'email' => 'Jogn@gmail.com'            
+            'email' => 'Jogn@gmail.com'
         ]);
 
         $this->assertInstanceOf(User::class, $user);
