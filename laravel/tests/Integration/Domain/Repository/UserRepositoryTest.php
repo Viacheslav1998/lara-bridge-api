@@ -4,8 +4,8 @@ namespace Tests\Integration\Domain\Repository;
 
 use App\Domain\User\Entities\User;
 use App\Domain\User\Repositories\UserRepository;
-use Tests\TestCase;
 use Illuminate\Support\Str;
+use Tests\TestCase;
 
 class UserRepositoryTest extends TestCase
 {
