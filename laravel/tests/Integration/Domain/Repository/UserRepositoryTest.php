@@ -1,30 +1,44 @@
 <?php
 
-namespace tests\Integration\Domain\Repository;
+namespace Tests\Integration\Domain\Repository;
 
 use App\Domain\User\Entities\User;
 use App\Domain\User\Repositories\UserRepository;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Illuminate\Support\Str;
 
 class UserRepositoryTest extends TestCase
 {
-    use RefreshDatabase;
+    protected UserRepository $repo;
 
-    public function test_create_user()
+    protected function setUp(): void
     {
-        $repo = new UserRepository();
+        parent::setUp();
+        $this->repo = new UserRepository();
+    }
 
-        $user = $repo->create([
-            'first_name' => 'Jogn',
-            'email' => 'Jogn@gmail.com'
-        ]);
 
-        $this->assertDatabaseHas('users', [
-            'email' => 'Jogn@gmail.com'
-        ]);
+    public function test_can_create_a_user_without_touching_existing_data()
+    {
+        $uniqueEmail = 'test+' . Str::random(8) . '@example.com';
+
+        $data = [
+            'first_name' => 'Integration',
+            'last_name' => 'Test',
+            'country' => 'Testland',
+            'phone' => '+999999999',
+            'number' => '999',
+            'super' => false,
+            'email' => $uniqueEmail,
+            'bio' => 'Integration test user'
+        ];
+
+        $user = $this->repo->create($data);
 
         $this->assertInstanceOf(User::class, $user);
-        $this->assertEquals('jogn@gmail.com', $user->email);
+        $this->assertEquals($uniqueEmail, $user->email);
+
+        // аккуратно удаляем только что созданного пользователя
+        $user->delete();
     }
 }

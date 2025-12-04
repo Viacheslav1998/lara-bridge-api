@@ -255,6 +255,7 @@ volumes:
 
 ```
 
+### 🧐✨ Fixer
 ```
 Установлен PHP-CS-Fixer
 проверка ошибок/стиля кода:
@@ -266,3 +267,20 @@ php ./php-cs-fixer fix --dry-run --diff
 // используем для исправления - если не работает git push
 php ./php-cs-fixer fix 
 ```
+
+### 🤓📝💯 Тестирование
+```
+Тестирование тут тоже есть 
+разделены логично по директориям:
+Unit
+Feature
+Integration
+
+все просто
+
+unit tests - php artisan test [запуск через докер]
+Feature tests - php artisan test [docker]
+Integration test - php artisan test tests/Integration
+или ./vendor/bin/phpunit tests/Integration/Domain/Repository/[fileTest.php]
+```
+
