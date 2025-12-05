@@ -4,12 +4,11 @@ namespace Tests\Feature\Domain\Repository;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use App\Domain\User\Entities\User;
 use Tests\TestCase;
 
 class UserApiTest extends TestCase
 {
-    use RefreshDatabase; 
+    use RefreshDatabase;
     use WithFaker;
 
     public function test_a_user_can_be_created_via_api()
@@ -23,8 +22,8 @@ class UserApiTest extends TestCase
 
         $response = $this->postJson('/api/users', $userData);
 
-        
-        $response->assertStatus(201) 
+
+        $response->assertStatus(201)
                  ->assertJson([
                      'message' => 'User created successfully',
                      'user' => ['email' => $userData['email']],
