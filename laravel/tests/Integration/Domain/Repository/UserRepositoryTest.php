@@ -17,7 +17,6 @@ class UserRepositoryTest extends TestCase
         $this->repo = new UserRepository();
     }
 
-
     public function test_can_create_a_user_without_touching_existing_data()
     {
         $uniqueEmail = 'test+' . Str::random(8) . '@example.com';
@@ -38,7 +37,6 @@ class UserRepositoryTest extends TestCase
         $this->assertInstanceOf(User::class, $user);
         $this->assertEquals($uniqueEmail, $user->email);
 
-        // аккуратно удаляем только что созданного пользователя
         $user->delete();
     }
 }

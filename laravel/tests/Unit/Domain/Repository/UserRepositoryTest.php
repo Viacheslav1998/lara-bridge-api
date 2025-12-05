@@ -16,7 +16,6 @@ class UserRepositoryTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-
         $this->repo = new UserRepository();
     }
 
