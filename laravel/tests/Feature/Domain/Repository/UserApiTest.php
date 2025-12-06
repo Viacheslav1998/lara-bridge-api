@@ -15,9 +15,13 @@ class UserApiTest extends TestCase
     {
         $userData = [
             'first_name' => $this->faker->firstName,
-            'email' => $this->faker->unique()->safeEmail,
-            'password' => 'password123',
-            'country' => 'USA'
+            'last_name' => $this->faker->lastName,
+            'country' => $this->faker->country(),
+            'phone' => $this->faker->phoneNumber(),
+            'number' => $this->faker->numberBetween(1,100),
+            'super' => $this->faker->boolean(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'bio' => $this->faker->paragraph(nb_senteces=3),
         ];
 
         $response = $this->postJson('/api/users', $userData);
