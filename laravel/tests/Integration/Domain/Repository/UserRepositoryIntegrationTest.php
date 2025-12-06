@@ -7,7 +7,7 @@ use App\Domain\User\Repositories\UserRepository;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 
-class UserRepositoryTest extends TestCase
+class UserRepositoryIntegrationTest extends TestCase
 {
     protected UserRepository $repo;
 
