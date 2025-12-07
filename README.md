@@ -278,7 +278,10 @@ Integration
 
 все просто
 [запуск через Docker]
-unit tests - php artisan test
+
+запуск php artisan test - запустят все тесты [что может привести к конфликту остальные тесты - поэтому запускай отдельно]
+
+unit tests - php artisan test tests/Unit
 Feature tests - php artisan test tests/Feature
 Integration test - php artisan test tests/Integration 
 или 
