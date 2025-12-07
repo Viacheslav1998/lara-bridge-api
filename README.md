@@ -277,10 +277,11 @@ Feature
 Integration
 
 все просто
-
-unit tests - php artisan test [запуск через докер]
-Feature tests - php artisan test [docker]
-Integration test - php artisan test tests/Integration
-или ./vendor/bin/phpunit tests/Integration/Domain/Repository/[fileTest.php]
+[запуск через Docker]
+unit tests - php artisan test
+Feature tests - php artisan test tests/Feature
+Integration test - php artisan test tests/Integration 
+или 
+./vendor/bin/phpunit tests/Integration/Domain/Repository/[fileTest.php]
 ```
 

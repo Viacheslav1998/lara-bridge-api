@@ -5,6 +5,7 @@ namespace Tests\Feature\Domain\Repository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Domain\User\Entities\User;
 
 class UserApiTest extends TestCase
 {
@@ -17,24 +18,23 @@ class UserApiTest extends TestCase
             'first_name' => $this->faker->firstName,
             'last_name' => $this->faker->lastName,
             'country' => $this->faker->country(),
-            'phone' => $this->faker->phoneNumber(),
+            'phone' => $this->faker->numerify(),
             'number' => $this->faker->numberBetween(1, 100),
             'super' => $this->faker->boolean(),
             'email' => $this->faker->unique()->safeEmail(),
+            'bio' => $this->faker->paragraphs(3, true)
         ];
 
-        $response = $this->postJson('/api/users', $userData);
-
+        $response = $this->postJson('api/users', $userData);
 
         $response->assertStatus(201)
                  ->assertJson([
                      'message' => 'User created successfully',
-                     'user' => ['email' => $userData['email']],
+                     'data' => ['email' => $userData['email']],
                  ]);
 
         $this->assertDatabaseHas('users', [
-            'email' => $userData['email'],
-            'country' => 'USA',
+            'email' => $userData['email']
         ]);
     }
 }
