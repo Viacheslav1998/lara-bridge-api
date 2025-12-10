@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Domain\Repository;
 
+use App\Domain\User\Entities\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use App\Domain\User\Entities\User;
 use Tests\TestCase;
 
 class UserApiTest extends TestCase
@@ -45,27 +45,27 @@ class UserApiTest extends TestCase
 
         $response = $this->getJson('/api/users');
 
-        // $response->dump(); 
+        // $response->dump();
 
         $response->assertStatus(200)
                 ->assertJsonStructure([
                 'status',
                 'message',
                 'data' => [
-                    '*' => [ 
-                        'first_name', 
-                        'last_name', 
-                        'country', 
-                        'phone', 
-                        'number', 
-                        'super', 
-                        'email', 
+                    '*' => [
+                        'first_name',
+                        'last_name',
+                        'country',
+                        'phone',
+                        'number',
+                        'super',
+                        'email',
                         'bio'
                     ]
                 ]
                 ])
-            
-                ->assertJsonCount(5, 'data'); 
+
+                ->assertJsonCount(5, 'data');
     }
 
 }
