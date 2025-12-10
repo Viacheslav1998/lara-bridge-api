@@ -35,7 +35,8 @@ class UserController
 
         return ApiResponse::success(
             UserResource::collection($users),
-            'users list retrieved successfully'
+            'users list retrieved successfully',
+            200
         );
     }
 

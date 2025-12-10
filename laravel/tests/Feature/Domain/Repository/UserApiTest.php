@@ -4,6 +4,7 @@ namespace Tests\Feature\Domain\Repository;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use App\Domain\User\Entities\User;
 use Tests\TestCase;
 
 class UserApiTest extends TestCase
@@ -36,4 +37,35 @@ class UserApiTest extends TestCase
             'email' => $userData['email']
         ]);
     }
+
+
+    public function test_a_list_of_users_can_be_retrieved_via_api()
+    {
+        User::factory()->count(5)->create();
+
+        $response = $this->getJson('/api/users');
+
+        // $response->dump(); 
+
+        $response->assertStatus(200)
+                ->assertJsonStructure([
+                'status',
+                'message',
+                'data' => [
+                    '*' => [ 
+                        'first_name', 
+                        'last_name', 
+                        'country', 
+                        'phone', 
+                        'number', 
+                        'super', 
+                        'email', 
+                        'bio'
+                    ]
+                ]
+                ])
+            
+                ->assertJsonCount(5, 'data'); 
+    }
+
 }
