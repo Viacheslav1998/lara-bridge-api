@@ -68,4 +68,77 @@ class UserApiTest extends TestCase
                 ->assertJsonCount(5, 'data');
     }
 
+    public function test_a_single_user_can_be_retrieved_via_api()
+    {
+        $user = User::factory()->create();
+
+        $response = $this->getJson('/api/users/' . $user->id);
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'data' => [
+                    'email' => $user->email,
+                    'first_name' => $user->first_name
+                ],
+            ]);
+    }
+
+
+    public function test_a_can_updated_via_api()
+    {
+        $user = User::factory()->create();
+        $newData = [
+            'fist_name' => 'UpdateName',
+            'country' => 'Canada'
+        ];
+        
+        $response = $this->putJson('/api/users' . $user->id, $newData);
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'message' => 'User updated successfully',
+                'data' => ['first_name' => 'UpdateName'],
+            ]);
+
+        $this->assertDatabaseHas('users', [
+            'id' => $user->id,
+            'first_name' => 'UpdateName',
+            'Country' => 'Canada',
+        ]);
+    }
+
+    public function test_a_user_can_be_deleted_via_api()
+    {
+        $user = User::factory()->create();
+
+        $response = $this->deleteJson('/api/users/' . $user->id);
+
+        $response->assertStatus(200)
+                 ->assertJson([
+                     'message' => 'User deleted successfully',
+                 ]);
+
+        $this->assertDatabaseMissing('users', ['id' => $user->id]);
+    }
+
+    public function test_users_can_be_retrieved_with_pagination_via_api()
+    {
+        User::factory()->count(30)->create();
+        $perPage = 10;
+
+        $response = $this->getJson('/api/users?page=1&per_page=' . $perPage);
+
+        $response->assertStatus(200)
+                 ->assertJsonStructure([
+                     'data' => [
+                         'current_page',
+                         'data' => ['*' => ['id', 'email']],
+                         'last_page',
+                         'total',
+                     ],
+                 ])
+                 ->assertJsonCount($perPage, 'data.data')
+                 ->assertJsonPath('data.total', 30);
+    }
+
 }
