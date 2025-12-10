@@ -91,7 +91,7 @@ class UserApiTest extends TestCase
             'fist_name' => 'UpdateName',
             'country' => 'Canada'
         ];
-        
+
         $response = $this->putJson('/api/users' . $user->id, $newData);
 
         $response->assertStatus(200)
