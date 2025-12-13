@@ -63,7 +63,7 @@ class UserController
     public function show(int $id)
     {
         $user = $this->userService->getCurrentOrFail($id);
-        
+
         return ApiResponse::success(
             new UserResource($user),
             'user was just found',
