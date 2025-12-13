@@ -7,13 +7,14 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
 {
     public function render($request, Throwable $e)
     {
-        if ($request->is('api/*')) {
+        if ($request->is('api/*') || $request->expectsJson()) {
             if ($e instanceof ValidationException) {
                 return ApiResponse::error(
                     'Validation failed',
@@ -22,7 +23,7 @@ class Handler extends ExceptionHandler
                 );
             }
 
-            if ($e instanceof ModelNotFoundException) {
+            if ($e instanceof ModelNotFoundException || $e instanceof NotFoundHttpException) {
                 return ApiResponse::error(
                     'Resource not found',
                     404

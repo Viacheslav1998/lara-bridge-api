@@ -60,10 +60,15 @@ class UserController
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(int $id)
     {
-        //
-
+        $user = $this->userService->getCurrentOrFail($id);
+        
+        return ApiResponse::success(
+            new UserResource($user),
+            'user was just found',
+            200
+        );
     }
 
     /**
@@ -76,7 +81,8 @@ class UserController
 
         return ApiResponse::success(
             new UserResource($updatedUser),
-            'User was updated successfully'
+            'User was updated successfully',
+            201
         );
 
     }
