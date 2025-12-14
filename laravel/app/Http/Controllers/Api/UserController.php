@@ -96,7 +96,11 @@ class UserController
 
         if (!empty($user)) {
             $this->userService->destroyUser($id);
-            return apiResponse::success('The user has been successfully deleted.');
+            return apiResponse::success(
+                $user,
+                'The user has been successfully deleted.',
+                200
+            );
         }
 
         return apiResponse::error('User not Found!', 404, 'Current User Not Found');

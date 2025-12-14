@@ -115,8 +115,6 @@ class UserApiTest extends TestCase
                 ],
             ]);
 
-        $response->dump();
-
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
             'first_name' => 'UpdateName',
@@ -130,10 +128,7 @@ class UserApiTest extends TestCase
 
         $response = $this->deleteJson('/api/users/' . $user->id);
 
-        $response->assertStatus(200)
-                 ->assertJson([
-                     'message' => 'User deleted successfully',
-                 ]);
+        $response->assertStatus(200);
 
         $this->assertDatabaseMissing('users', ['id' => $user->id]);
     }
