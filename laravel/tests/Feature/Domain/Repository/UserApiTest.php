@@ -87,23 +87,40 @@ class UserApiTest extends TestCase
     public function test_a_can_updated_via_api()
     {
         $user = User::factory()->create();
+
         $newData = [
-            'fist_name' => 'UpdateName',
-            'country' => 'Canada'
+           'first_name' => 'UpdateName',
+            'last_name' => 'UpdLName',
+            'country' => 'Karaganda',
+            'phone' => '678',
+            'number' => '9292',
+            'super' => 'id-asd',
+            'email' => 'nickik@gmail.com',
+            'bio' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste sequi quaerat laudantium voluptates accusantium dolor fuga quibusdam nemo et! Esse fugiat dicta hic nemo dolor ipsum, alias reprehenderit in nostrum?'
         ];
 
-        $response = $this->putJson('/api/users' . $user->id, $newData);
+        $response = $this->putJson('/api/users/' . $user->id, $newData);
 
-        $response->assertStatus(200)
+        $response->assertStatus(201)
             ->assertJson([
-                'message' => 'User updated successfully',
-                'data' => ['first_name' => 'UpdateName'],
+                'data' => [
+                    'first_name' => 'UpdateName',
+                    'last_name' => 'UpdLName',
+                    'country' => 'Karaganda',
+                    'phone' => '678',
+                    'number' => '9292',
+                    'super' => 'id-asd',
+                    'email' => 'nickik@gmail.com',
+                    'bio' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste sequi quaerat laudantium voluptates accusantium dolor fuga quibusdam nemo et! Esse fugiat dicta hic nemo dolor ipsum, alias reprehenderit in nostrum?'
+                ],
             ]);
+
+            $response->dump();
 
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
             'first_name' => 'UpdateName',
-            'Country' => 'Canada',
+            'country' => 'Karaganda',
         ]);
     }
 
