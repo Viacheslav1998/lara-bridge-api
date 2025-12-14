@@ -115,7 +115,7 @@ class UserApiTest extends TestCase
                 ],
             ]);
 
-            $response->dump();
+        $response->dump();
 
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
