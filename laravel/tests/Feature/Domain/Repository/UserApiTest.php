@@ -9,6 +9,7 @@ use Tests\TestCase;
 
 class UserApiTest extends TestCase
 {
+    
     use RefreshDatabase;
     use WithFaker;
 
@@ -38,35 +39,6 @@ class UserApiTest extends TestCase
         ]);
     }
 
-
-    public function test_a_list_of_users_can_be_retrieved_via_api()
-    {
-        User::factory()->count(5)->create();
-
-        $response = $this->getJson('/api/users');
-
-        // $response->dump();
-
-        $response->assertStatus(200)
-                ->assertJsonStructure([
-                'status',
-                'message',
-                'data' => [
-                    '*' => [
-                        'first_name',
-                        'last_name',
-                        'country',
-                        'phone',
-                        'number',
-                        'super',
-                        'email',
-                        'bio'
-                    ]
-                ]
-                ])
-
-                ->assertJsonCount(5, 'data');
-    }
 
     public function test_a_single_user_can_be_retrieved_via_api()
     {
@@ -140,17 +112,24 @@ class UserApiTest extends TestCase
 
         $response = $this->getJson('/api/users?page=1&per_page=' . $perPage);
 
-        $response->assertStatus(200)
-                 ->assertJsonStructure([
-                     'data' => [
+         $response->assertStatus(200)
+             ->assertJsonStructure([
+                 'status',
+                 'message',
+                 'data' => [
+                     'data' => ['*' => ['id', 'email']],
+                     'meta' => [                         
                          'current_page',
-                         'data' => ['*' => ['id', 'email']],
                          'last_page',
                          'total',
                      ],
-                 ])
-                 ->assertJsonCount($perPage, 'data.data')
-                 ->assertJsonPath('data.total', 30);
+                     'links' => ['first', 'last', 'prev', 'next']
+                 ],
+             ])
+             
+             ->assertJsonCount($perPage, 'data.data')
+             
+             ->assertJsonPath('data.meta.total', 30);
     }
 
 }

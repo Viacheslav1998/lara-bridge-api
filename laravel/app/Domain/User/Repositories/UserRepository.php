@@ -4,6 +4,7 @@ namespace App\Domain\User\Repositories;
 
 use App\Domain\User\Entities\User;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator; 
 
 class UserRepository
 {
@@ -73,7 +74,7 @@ class UserRepository
         return User::create($data);
     }
 
-    public function getChank(int $perPage = 10): LengthAwarePaginator
+    public function getPaginated(int $perPage = 10): LengthAwarePaginator
     {
         return User::query()->paginate($perPage);
     }

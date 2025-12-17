@@ -10,6 +10,7 @@ use App\Domain\User\Repositories\UserRepository;
 use App\Domain\User\Services\UserService;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\UserIndexRequest;
 use App\Http\Resources\UserResource;
 use App\Http\Responses\ApiResponse;
 
@@ -23,21 +24,15 @@ class UserController
     }
 
     /**
-     * Get all Users
+     * user paginate
      */
-    public function index(UserRepository $userRepository)
+    public function index(UserIndexRequest $request, UserRepository $userRepository)
     {
-        $users = $userRepository->getUsers();
+        $users = $userRepository->getPaginated($request->input('per_page', 10));
 
-        if ($users->isEmpty()) {
-            throw new \Illuminate\Database\Eloquent\ModelNotFoundException('No users Found.');
-        }
+        $data = UserResource::collection($users)->response()->getData(true);
 
-        return ApiResponse::success(
-            UserResource::collection($users),
-            'users list retrieved successfully',
-            200
-        );
+        return ApiResponse::success($data, 'User retrieved', 200);
     }
 
     /**
