@@ -9,7 +9,6 @@ use Tests\TestCase;
 
 class UserApiTest extends TestCase
 {
-    
     use RefreshDatabase;
     use WithFaker;
 
@@ -112,24 +111,24 @@ class UserApiTest extends TestCase
 
         $response = $this->getJson('/api/users?page=1&per_page=' . $perPage);
 
-         $response->assertStatus(200)
-             ->assertJsonStructure([
-                 'status',
-                 'message',
-                 'data' => [
-                     'data' => ['*' => ['id', 'email']],
-                     'meta' => [                         
-                         'current_page',
-                         'last_page',
-                         'total',
-                     ],
-                     'links' => ['first', 'last', 'prev', 'next']
-                 ],
-             ])
-             
-             ->assertJsonCount($perPage, 'data.data')
-             
-             ->assertJsonPath('data.meta.total', 30);
+        $response->assertStatus(200)
+            ->assertJsonStructure([
+                'status',
+                'message',
+                'data' => [
+                    'data' => ['*' => ['id', 'email']],
+                    'meta' => [
+                        'current_page',
+                        'last_page',
+                        'total',
+                    ],
+                    'links' => ['first', 'last', 'prev', 'next']
+                ],
+            ])
+
+            ->assertJsonCount($perPage, 'data.data')
+
+            ->assertJsonPath('data.meta.total', 30);
     }
 
 }

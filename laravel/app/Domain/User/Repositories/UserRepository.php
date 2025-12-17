@@ -3,8 +3,8 @@
 namespace App\Domain\User\Repositories;
 
 use App\Domain\User\Entities\User;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator; 
 
 class UserRepository
 {
