@@ -4,6 +4,7 @@ namespace App\Domain\User\Services;
 
 use App\Domain\User\Repositories\UserRepository;
 use App\Exceptions\InvalidFilterException;
+use App\Http\Resources\UserResource;
 
 class UserService
 {
@@ -12,6 +13,13 @@ class UserService
     public function __construct(
         protected UserRepository $repository
     ) {
+    }
+
+    public function getPaginatedUsersData(int $perPage = 10)
+    {
+        $user = $this->repository->getPaginated($perPage);
+
+        return UserResource::collection($user)->response()->getData(true);
     }
 
     public function findUsersByFilters(array $filters)
@@ -54,6 +62,7 @@ class UserService
     public function updateCurrentUser(int $userId, array $data)
     {
         $user = $this->repository->findById($userId);
+
         return $this->repository->update($user, $data);
     }
 

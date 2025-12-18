@@ -8,11 +8,6 @@ use Illuminate\Database\Eloquent\Collection;
 
 class UserRepository
 {
-    public function getUsers(): Collection
-    {
-        return User::all();
-    }
-
     public function findByFilters(array $filters)
     {
         $query = User::query();

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Actions\User\CreateUserAction;
 use App\Actions\User\FilterUserAction;
 use App\Actions\User\UpdateUserAction;
+use App\Actions\User\GetPaginatedUsersAction;
 use App\Domain\User\Entities\User;
 use App\Domain\User\Repositories\UserRepository;
 use App\Domain\User\Services\UserService;
@@ -24,15 +25,15 @@ class UserController
     }
 
     /**
-     * user paginate
+     * User paginate
      */
-    public function index(UserIndexRequest $request, UserRepository $userRepository)
+    public function index(UserIndexRequest $request, GetPaginatedUsersAction $action)
     {
-        $users = $userRepository->getPaginated($request->input('per_page', 10));
+        $data = $action->execute(
+            $request->input('per_page', 10)
+        );
 
-        $data = UserResource::collection($users)->response()->getData(true);
-
-        return ApiResponse::success($data, 'User retrieved', 200);
+        return ApiResponse::success($data, 'User retrieved');
     }
 
     /**
