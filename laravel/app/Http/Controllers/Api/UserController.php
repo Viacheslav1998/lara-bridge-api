@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Actions\User\CreateUserAction;
 use App\Actions\User\FilterUserAction;
-use App\Actions\User\UpdateUserAction;
 use App\Actions\User\GetPaginatedUsersAction;
+use App\Actions\User\UpdateUserAction;
 use App\Domain\User\Entities\User;
-use App\Domain\User\Repositories\UserRepository;
 use App\Domain\User\Services\UserService;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
