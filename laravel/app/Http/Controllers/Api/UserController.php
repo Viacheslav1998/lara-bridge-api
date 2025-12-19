@@ -28,11 +28,11 @@ class UserController
      */
     public function index(UserIndexRequest $request, GetPaginatedUsersAction $action)
     {
-        $data = $action->execute(
+        $resourceCollection = $action->execute(
             $request->input('per_page', 10)
         );
 
-        return ApiResponse::success($data, 'User retrieved');
+        return ApiResponse::success($resourceCollection, 'User retrieved', 200);
     }
 
     /**

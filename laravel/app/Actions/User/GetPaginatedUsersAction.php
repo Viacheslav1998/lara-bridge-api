@@ -3,7 +3,7 @@
 namespace App\Actions\User;
 
 use App\Domain\User\Repositories\UserRepository;
-use App\Http\Resource\UserResource;
+use App\Http\Resources\UserResource;
 
 class GetPaginatedUsersAction
 {
@@ -14,10 +14,10 @@ class GetPaginatedUsersAction
         $this->repository = $repository;
     }
 
-    public function execute(int $perPage): array
+    public function execute(int $perPage)
     {
-        $user = $this->repository->getPaginated($perPage);
+        $users = $this->repository->getPaginated($perPage);
 
-        return UserResource::collection($user)->response->getData(true);
+        return UserResource::collection($users)->toResponse(request())->getData(true);
     }
 }
