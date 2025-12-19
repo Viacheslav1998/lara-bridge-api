@@ -4,7 +4,6 @@ namespace App\Domain\User\Services;
 
 use App\Domain\User\Repositories\UserRepository;
 use App\Exceptions\InvalidFilterException;
-use App\Http\Resources\UserResource;
 
 class UserService
 {
