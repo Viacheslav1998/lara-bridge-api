@@ -15,13 +15,6 @@ class UserService
     ) {
     }
 
-    public function getPaginatedUsersData(int $perPage = 10)
-    {
-        $user = $this->repository->getPaginated($perPage);
-
-        return UserResource::collection($user)->response()->getData(true);
-    }
-
     public function findUsersByFilters(array $filters)
     {
         $InvalidFilters = array_diff(array_keys($filters), $this->allowedFilters);
