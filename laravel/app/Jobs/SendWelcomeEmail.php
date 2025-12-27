@@ -7,7 +7,10 @@ use Illuminate\Foundation\Queue\Queueable;
 
 class SendWelcomeEmail implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, SerializesModel, Queueable;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use SerializesModel;
+    use Queueable;
 
     /**
      * Create a new job instance.
