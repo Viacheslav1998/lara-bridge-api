@@ -15,12 +15,18 @@ class SendWelcomeEmail implements ShouldQueue
     use SerializesModel;
     use Queueable;
 
+
+    public string $email;
+
+    public $tries = 3;
+    public $timeout = 30;
+
     /**
      * Create a new job instance.
      */
-    public function __construct()
+    public function __construct(string $email;)
     {
-        //
+        $this->email = $email;
     }
 
     /**
@@ -28,6 +34,13 @@ class SendWelcomeEmail implements ShouldQueue
      */
     public function handle(): void
     {
-        Mail::to($this->user)->send(new WelcomeEmail());
+        Mail::raw(
+            'Welcome!!! this is message sender across queue 🚀🚀🚀',
+            function ($message) {
+                $message->to($this->email)
+                        ->subject('Welcome!');
+            }
+ 
+        );
     }
 }
