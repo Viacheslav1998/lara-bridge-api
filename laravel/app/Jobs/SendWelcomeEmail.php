@@ -24,7 +24,7 @@ class SendWelcomeEmail implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct(string $email;)
+    public function __construct(string $email)
     {
         $this->email = $email;
     }
@@ -40,7 +40,6 @@ class SendWelcomeEmail implements ShouldQueue
                 $message->to($this->email)
                         ->subject('Welcome!');
             }
- 
         );
     }
 }
