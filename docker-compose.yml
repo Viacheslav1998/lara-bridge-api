@@ -45,6 +45,15 @@ services:
     networks:
       - lara_bridge_net
 
+  redis:
+    image: redis:7-alpine
+    container_name: lara_bridge_redis
+    restart: unless-stopped
+    ports:
+     - "6379:6379"
+    networks:
+      - lara_bridge_net
+
 networks:
   lara_bridge_net:
 

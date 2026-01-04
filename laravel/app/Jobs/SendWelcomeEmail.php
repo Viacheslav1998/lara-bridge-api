@@ -21,6 +21,11 @@ class SendWelcomeEmail implements ShouldQueue
     public $tries = 3;
     public $timeout = 30;
 
+    public function backoff(): array
+    {
+        return [30, 120, 300];
+    }
+
     /**
      * Create a new job instance.
      */
