@@ -6,17 +6,13 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
+// use example model
 
 class SendWelcomeEmail implements ShouldQueue
 {
-    use Dispatchable;
-    use InteractsWithQueue;
-    use SerializesModel;
-    use Queueable;
-
-
-    public string $email;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public $tries = 3;
     public $timeout = 30;
@@ -26,21 +22,14 @@ class SendWelcomeEmail implements ShouldQueue
         return [30, 120, 300];
     }
 
-    /**
-     * Create a new job instance.
-     */
-    public function __construct(string $email)
-    {
-        $this->email = $email;
-    }
+    public function __construct(
+        public string $email
+    ) {}
 
-    /**
-     * Execute the job.
-     */
     public function handle(): void
     {
         Mail::raw(
-            'Welcome!!! this is message sender across queue 🚀🚀🚀',
+            'Welcome!!! this is message sender across queue 🚀',
             function ($message) {
                 $message->to($this->email)
                         ->subject('Welcome!');
