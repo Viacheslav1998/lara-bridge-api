@@ -4,12 +4,21 @@ use App\Http\Controllers\Analytics\UserAnalyticsController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
+use App\Jobs\sendTestMessage;
+
 
 // tests and logs
 Route::get('/test-log', function () {
     Log::error('test logger');
     return 200;
 });
+
+// test Job
+Route::get('/test-job', function() {
+    sendTestMessage::dispatch();
+    return "ok";
+});
+
 
 Route::get('/', function () {
     return [
