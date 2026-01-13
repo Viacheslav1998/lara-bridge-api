@@ -10,10 +10,10 @@ use Illuminate\Queue\SerializesModels;
 
 class sendTestMessage implements ShouldQueue
 {
-     use Dispatchable;
-     use InteractsWithQueue;
-     use Queueable;
-     use SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     /**
      * Execute the job.

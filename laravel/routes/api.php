@@ -2,10 +2,9 @@
 
 use App\Http\Controllers\Analytics\UserAnalyticsController;
 use App\Http\Controllers\Api\UserController;
+use App\Jobs\sendTestMessage;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
-use App\Jobs\sendTestMessage;
-
 
 // tests and logs
 Route::get('/test-log', function () {
@@ -14,9 +13,9 @@ Route::get('/test-log', function () {
 });
 
 // test Job
-Route::get('/test-job', function() {
+Route::get('/test-job', function () {
     sendTestMessage::dispatch();
-    return "ok";
+    return 'ok';
 });
 
 
