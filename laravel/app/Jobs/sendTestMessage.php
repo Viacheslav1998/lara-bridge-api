@@ -2,12 +2,12 @@
 
 namespace App\Jobs;
 
+use Illiminate\Support\Facades\Log;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illiminate\Support\Facades\Log;
 
 class sendTestMessage implements ShouldQueue
 {
