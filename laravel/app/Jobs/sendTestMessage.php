@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illiminate\Support\Facades\Log;
 
 class sendTestMessage implements ShouldQueue
 {
@@ -20,6 +21,6 @@ class sendTestMessage implements ShouldQueue
      */
     public function handle(): void
     {
-        logger('the new tasks compleate');
+        Log::info('the new tasks compleate');
     }
 }
