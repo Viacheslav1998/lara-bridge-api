@@ -2,14 +2,14 @@
 
 namespace App\Jobs;
 
-use Illiminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class sendTestMessage implements ShouldQueue
+class SendTestMessage implements ShouldQueue
 {
     use Dispatchable;
     use InteractsWithQueue;
@@ -21,6 +21,6 @@ class sendTestMessage implements ShouldQueue
      */
     public function handle(): void
     {
-        Log::info('the new tasks compleate');
+        Log::info('Job SendTestMessage execute successfullyat: ' , now());
     }
 }
