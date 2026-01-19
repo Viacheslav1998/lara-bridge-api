@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Actions\User\CreateUserAction;
 use App\Actions\User\FilterUserAction;
 use App\Actions\User\GetPaginatedUsersAction;
+use App\Actions\User\CreateLogAction;
 use App\Actions\User\UpdateUserAction;
 use App\Domain\User\Entities\User;
 use App\Domain\User\Services\UserService;
@@ -115,5 +116,12 @@ class UserController
         }
 
         return ApiResponse::success(UserResource::collection($users));
+    }
+
+    /** just test logs/works/jobs */
+    public function logsAttention(CreateLogAction $action)
+    {
+        $logs = $action->execute();
+        return ApiResponse::success($message = 'Log/Jobs - successfull - next work');
     }
 }
