@@ -119,9 +119,9 @@ class UserController
     }
 
     /** just test logs/works/jobs */
-    public function logsAttention(CreateLogAction $action)
+    public function jobLog(CreateLogAction $action)
     {
         $logs = $action->execute();
-        return ApiResponse::success($message = 'Log/Jobs - successfull - next work');
+        return ApiResponse::success($message, 200);
     }
 }

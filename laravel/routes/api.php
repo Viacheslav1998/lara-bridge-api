@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 // tests and logs
 Route::get('/test-log', function () {
-    Log::error('test logger');
+    Log::info('test logger');
     return 200;
 });
 
@@ -18,7 +18,9 @@ Route::get('/test-job', function () {
     return 'ok';
 });
 
+Route::get('/test-user-job', [UserController::class, 'jobLog']);
 
+// test answer
 Route::get('/', function () {
     return [
         'status' => 'ok',
