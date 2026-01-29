@@ -21,6 +21,6 @@ class SendTestMessage implements ShouldQueue
      */
     public function handle(): void
     {
-        Log::info('Job SendTestMessage execute successfullyat: ', now());
+        Log::info('Job SendTestMessage execute successfullyat: ', ['time' => now()]);
     }
 }

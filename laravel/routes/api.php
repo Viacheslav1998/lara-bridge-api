@@ -2,12 +2,12 @@
 
 use App\Http\Controllers\Analytics\UserAnalyticsController;
 use App\Http\Controllers\Api\UserController;
-use App\Jobs\sendTestMessage;
+use App\Jobs\SendTestMessage;
 use Illuminate\Support\Facades\Route;
 
 // test Job
 Route::get('/test-job', function () {
-    sendTestMessage::dispatch();
+    SendTestMessage::dispatch();
     return 'ok';
 });
 
