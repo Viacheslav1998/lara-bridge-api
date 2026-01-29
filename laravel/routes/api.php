@@ -6,12 +6,6 @@ use App\Jobs\sendTestMessage;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
-// tests and logs
-Route::get('/test-log', function () {
-    Log::info('test logger');
-    return 200;
-});
-
 // test Job
 Route::get('/test-job', function () {
     sendTestMessage::dispatch();
