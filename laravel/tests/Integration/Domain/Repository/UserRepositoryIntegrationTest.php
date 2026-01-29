@@ -4,11 +4,14 @@ namespace Tests\Integration\Domain\Repository;
 
 use App\Domain\User\Entities\User;
 use App\Domain\User\Repositories\UserRepository;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class UserRepositoryIntegrationTest extends TestCase
 {
+    use RefreshDatabase;
+
     protected UserRepository $repo;
 
     protected function setUp(): void
