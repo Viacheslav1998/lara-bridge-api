@@ -10,7 +10,7 @@ use Tests\TestCase;
 
 class UserRepositoryTest extends TestCase
 {
-    use RefreshDatabase; 
+    use RefreshDatabase;
 
     private UserRepository $repo;
 
@@ -36,7 +36,7 @@ class UserRepositoryTest extends TestCase
     {
         $this->expectException(\Illuminate\Database\Eloquent\ModelNotFoundException::class);
 
-        $this->repo->findById(999); 
+        $this->repo->findById(999);
     }
 
     #[Test]
