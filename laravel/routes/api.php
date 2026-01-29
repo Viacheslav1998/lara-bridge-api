@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 // analytics
 Route::prefix('analytics')->group(function () {
-    Route::get('/users/test', [UserAnalyticsController::class, 'test']);
+    Route::get('/users/count', [UserAnalyticsController::class, 'getCountUsers']);
     // ...
 });
 

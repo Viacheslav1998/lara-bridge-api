@@ -15,11 +15,6 @@ class UserAnalyticsController
 
     public function getCountUsers()
     {
-        return '123';
-    }
-
-    public function test()
-    {
-        return '123';
+        return '5712 users in database';
     }
 }
