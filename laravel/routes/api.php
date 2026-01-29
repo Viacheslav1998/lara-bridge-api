@@ -2,14 +2,7 @@
 
 use App\Http\Controllers\Analytics\UserAnalyticsController;
 use App\Http\Controllers\Api\UserController;
-use App\Jobs\SendTestMessage;
 use Illuminate\Support\Facades\Route;
-
-// test Job
-Route::get('/test-job', function () {
-    SendTestMessage::dispatch();
-    return 'ok';
-});
 
 Route::get('/test-user-job', [UserController::class, 'jobLog']);
 

@@ -2,12 +2,12 @@
 
 namespace App\Actions\User;
 
+use App\Jobs\SendTestMessage;
+
 class CreateLogAction
 {
-    public function execute(array $data)
+    public function execute()
     {
-        // logic ...  store ...
-
-        sendTestMessage::dispatch();
+        SendTestMessage::dispatch();
     }
 }

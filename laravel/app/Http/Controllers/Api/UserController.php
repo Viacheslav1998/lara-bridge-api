@@ -118,11 +118,15 @@ class UserController
         return ApiResponse::success(UserResource::collection($users));
     }
 
-    /** just test logs/works/jobs */
+    /**
+     * Required response fields:
+     * - data
+     * - message
+     * - code
+     */
     public function jobLog(CreateLogAction $action)
     {
-        $message = 'job it sender';
-        $logs = $action->execute();
-        return ApiResponse::success($message, 200);
+        $action->execute();
+        return ApiResponse::success(['status' => 'success'], 'ok', 200);
     }
 }
