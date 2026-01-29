@@ -21,8 +21,11 @@ jobs:
     - name: Install PHP dependencies
       run: docker compose -f docker-compose.ci.yml run --rm app composer install --no-progress --no-interaction
 
-    - name: Run PHPUnit tests
-      run: docker compose -f docker-compose.ci.yml run --rm app php artisan test
+    - name: Run Migrations and Tests
+      run: |
+        sleep 10
+        docker compose -f docker-compose.ci.yml run --rm app php artisan migrate --force
+        docker compose -f docker-compose.ci.yml run --rm app php artisan test
 
     - name: Run PHP CS Fixer
       run: |
