@@ -4,13 +4,14 @@ namespace Tests\Unit\Domain\Repository;
 
 use App\Domain\User\Entities\User;
 use App\Domain\User\Repositories\UserRepository;
-use Illuminate\Database\Eloquent\Collection;
-use Mockery;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class UserRepositoryTest extends TestCase
 {
+    use RefreshDatabase; 
+
     private UserRepository $repo;
 
     protected function setUp(): void
@@ -19,74 +20,30 @@ class UserRepositoryTest extends TestCase
         $this->repo = new UserRepository();
     }
 
-    public function tearDown(): void
-    {
-        Mockery::close();
-        parent::tearDown();
-    }
-
     #[Test]
-    public function it_calls_all_on_user_model(): void
+    public function it_finds_user_by_id(): void
     {
-        $userMock = Mockery::mock('alias:' . User::class);
+        $user = User::factory()->create();
 
-        $collection = new Collection();
+        $actualUser = $this->repo->find($user->id);
 
-        $userMock->shouldReceive('all')
-            ->once()
-            ->andReturn($collection);
-
-        $this->assertSame($collection, $this->repo->getUsers());
-    }
-
-    #[Test]
-    public function if_finds_user_by_id(): void
-    {
-        // cnfg Alias mocking for calling User::find()
-        $mock = Mockery::mock('alias:' . User::class);
-        $expectedUser = new User([
-            'id' => 1,
-            'name' => 'John'
-        ]);
-
-        // cnfg waiting
-        $mock->shouldReceive('find')
-            ->with(1)
-            ->once()
-            ->andReturn($expectedUser);
-
-        // run test, run method repo[repository]
-        $actualUser = $this->repo->find(1);
-
-        // approval
-        $this->assertSame($expectedUser, $actualUser);
+        $this->assertNotNull($actualUser);
+        $this->assertEquals($user->id, $actualUser->id);
     }
 
     #[Test]
     public function it_throws_exception_if_user_not_found(): void
     {
-        $mock = Mockery::mock('alias:' . User::class);
-
-        $mock->shouldReceive('findOrFail')
-            ->once()
-            ->withAnyArgs()
-            ->andThrow(\Illuminate\Database\Eloquent\ModelNotFoundException::class);
-
         $this->expectException(\Illuminate\Database\Eloquent\ModelNotFoundException::class);
 
-        $this->repo->findById(2);
+        $this->repo->findById(999); 
     }
 
     #[Test]
-    public function it_couns_user(): void
+    public function it_counts_users(): void
     {
-        $mock = Mockery::mock('alias:' . User::class);
+        User::factory()->count(3)->create();
 
-        $mock->shouldReceive('query->count')
-            ->once()
-            ->andReturn(100);
-
-        $this->assertSame(100, $this->repo->count());
+        $this->assertSame(3, $this->repo->count());
     }
-
 }
