@@ -121,7 +121,7 @@ class UserController
     /** just test logs/works/jobs */
     public function jobLog(CreateLogAction $action)
     {
-        $message = "job it sender";
+        $message = 'job it sender';
         $logs = $action->execute();
         return ApiResponse::success($message, 200);
     }

@@ -3,7 +3,6 @@
 use App\Http\Controllers\Analytics\UserAnalyticsController;
 use App\Http\Controllers\Api\UserController;
 use App\Jobs\sendTestMessage;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 // test Job
