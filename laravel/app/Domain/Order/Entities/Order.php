@@ -23,12 +23,13 @@ class Order extends Model
     * @var array<int, string>
     */
     protected $fillable = [
+        'user_id',
         'name',
         'price',
         'year',
         'type',
         'count',
-        'deskription',
+        'description',
         'content',
         'assessment'
     ];
