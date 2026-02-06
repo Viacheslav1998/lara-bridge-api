@@ -6,19 +6,18 @@ use App\Domain\Catalog\Entities\Product;
 use App\Domain\Catalog\Entities\ProductSku;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Domain\Catalog\Entities\ProductSku>
  */
 class ProductSkuFactory extends Factory
 {
     protected $model = ProductSku::class;
-    
-     /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+
+    /**
+    * Define the model's default state.
+    *
+    * @return array<string, mixed>
+    */
     public function definition(): array
     {
         return [
