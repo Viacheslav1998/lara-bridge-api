@@ -50,7 +50,51 @@
             <span>Build: 2.0.4</span>
             <a href="https://github.com/Viacheslav1998/lara-bridge-api" class="hover:text-indigo-500 transition-colors">Documentation &rarr;</a>
         </div>
-    </div>
+        <br>
+        <!-- Info Grid -->
+        <div class="space-y-3">
+            <!-- Nginx -->
+            <div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-transparent hover:border-blue-100 transition-all group">
+                <div class="flex items-center gap-3">
+                    <span class="text-blue-600 group-hover:scale-110 transition-transform">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" /></svg>
+                    </span>
+                    <span class="text-slate-500 text-sm font-medium">Web Server</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="font-mono text-[10px] font-bold text-slate-400 uppercase">Nginx</span>
+                    <span class="h-2 w-2 bg-blue-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(59,130,246,0.5)]"></span>
+                </div>
+            </div>
 
+            <!-- Postgres -->
+            <div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-transparent hover:border-indigo-100 transition-all group">
+                <div class="flex items-center gap-3">
+                    <span class="text-indigo-600 group-hover:scale-110 transition-transform">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7c-2 0-3 1-3 3z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7c0 1 1 2 3 2s3-1 3-2M4 12c0 1 1 2 3 2s3-1 3-2M4 17c0 1 1 2 3 2s3-1 3-2" /></svg>
+                    </span>
+                    <span class="text-slate-500 text-sm font-medium">Database</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="font-mono text-[10px] font-bold text-slate-400 uppercase">PostgreSQL</span>
+                    <span class="h-2 w-2 bg-indigo-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(99,102,241,0.5)]"></span>
+                </div>
+            </div>
+
+            <!-- Redis -->
+            <div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-transparent hover:border-red-100 transition-all group">
+                <div class="flex items-center gap-3">
+                    <span class="text-red-500 group-hover:scale-110 transition-transform">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2 1 5 3 5h10c2 0 3-3 3-5V7c0-2-1-3-3-3H7C5 4 4 5 4 7z" /></svg>
+                    </span>
+                    <span class="text-slate-500 text-sm font-medium">Memory</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="font-mono text-[10px] font-bold text-slate-400 uppercase">Redis</span>
+                    <span class="h-2 w-2 bg-red-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(239,68,68,0.5)]"></span>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
