@@ -2,7 +2,7 @@
 
 namespace App\Domain\Order\Entities;
 
-use Database\Factories\OrderItemsFactory;
+use Database\Factories\OrderItemFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -34,7 +34,7 @@ class OrderItems extends Model
      */
     protected static function newFactory()
     {
-        return OrderItemsFactory::new();
+        return OrderItemFactory::new();
     }
 
 }
