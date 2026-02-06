@@ -27,6 +27,6 @@ class ProductSkuFactory extends Factory
             'stock_count' => $this->faker->numberBetween(0, 100),
             'size' => $this->faker->randomElement([36, 36.5, 37, 38, 39, 40, 41, 42, 43, 44, 45]),
             'price' => $this->faker->randomFload(2, 500, 10000),
-        ]
+        ];
     }
 }
