@@ -6,7 +6,7 @@ use Database\Factories\CategoryFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class OrderItems extends Model
+class Category extends Model
 {
     use HasFactory;
 
@@ -15,8 +15,7 @@ class OrderItems extends Model
      *
      * @var string
      */
-    protected $table = 'order_items';
-
+    protected $table = 'categories';
     /**
     * The attributes that are mass assignable.
     *
