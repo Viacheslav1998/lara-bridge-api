@@ -32,7 +32,7 @@ class OrderItems extends Model
      */
     protected static function newFactory()
     {
-        return Category::new();
+        return CategoryFactory::new();
     }
 
 }
