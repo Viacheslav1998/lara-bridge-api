@@ -11,8 +11,7 @@ class CategorySeeder extends Seeder
     {
         $categories = ['куртки', 'штаны', 'штаны', 'акссесуары'];
 
-        foreach($categories as $name)
-        {
+        foreach ($categories as $name) {
             Category::create([
                 'name' => $name,
                 'slug' => $slug
