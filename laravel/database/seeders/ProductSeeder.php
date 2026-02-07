@@ -12,7 +12,7 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         $categories = Category::all();
-        
+
         $categories->each(function ($category) {
             Product::factory(10)
               ->has(ProductSku::factory->count(3), 'skus')
