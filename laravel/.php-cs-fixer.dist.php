@@ -36,5 +36,4 @@ return (new Config())
         'no_blank_lines_after_class_opening' => true,
         'no_blank_lines_after_phpdoc' => true,
     ])
-    ->setFinder($finder)
-    ->setPhpExecutableType(null); 
+    ->setFinder($finder);
