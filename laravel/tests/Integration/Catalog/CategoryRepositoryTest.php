@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Integration\Domain\Catalog\Repository;
+namespace Tests\Integration\Catalog;
 
 use App\Domain\Catalog\Entities\Category;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class CategoryMappingTest extends TestCase
+class CategoryRepositoryTest extends TestCase
 {
     use RefreshDatabase;
 
