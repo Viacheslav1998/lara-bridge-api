@@ -17,12 +17,10 @@ class CategoryRepositoryTest extends TestCase
             'slug' => 'kurtki'
         ];
 
-        Category::create($data);
+        $repository = new \App\Domain\Catalog\Repositories\CategoryRepository();
+        $repository->save();
 
-        $this->assertDatabaseHas('categories', [
-            'name' => 'Куртки',
-            'slug' => 'kurtki'
-        ]);
+        $this->assertDatabaseHas('categories', $data);
     }
 
 }
