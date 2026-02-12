@@ -14,7 +14,7 @@ class CategoryRepositoryTest extends TestCase
         $data = [ 'name' => 'Куртки', 'slug' => 'kurtki'];
         $repository = new \App\Domain\Catalog\Repositories\CategoryRepository();
 
-        $repository->save($data);
+        $category = $repository->save($data);
 
         $this->assertInstanceOf(\App\Domain\Catalog\Entities\Category::class, $category);
 
