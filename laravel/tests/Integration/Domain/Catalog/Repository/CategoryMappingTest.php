@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Integration\Domain\Repository;
+namespace Tests\Integration\Domain\Catalog\Repository;
 
 use App\Domain\Catalog\Entities\Category;
 use Illuminate\Foundation\Testing\RefreshDatabase;
