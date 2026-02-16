@@ -12,6 +12,7 @@ class CategoryRepositoryTest extends TestCase
     public function test_can_save_a_category_to_database(): void
     {
         $data = [ 'name' => 'Куртки', 'slug' => 'kurtki'];
+
         $repository = new \App\Domain\Catalog\Repositories\CategoryRepository();
 
         $category = $repository->save($data);
@@ -19,6 +20,8 @@ class CategoryRepositoryTest extends TestCase
         $this->assertInstanceOf(\App\Domain\Catalog\Entities\Category::class, $category);
 
         $this->assertDatabaseHas('categories', $data);
+
+        $this->assertNotNull($category->id);
     }
 
 }
