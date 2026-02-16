@@ -6,6 +6,7 @@ use App\Domain\Catalog\Entities\Category;
 
 class CategoryRepository
 {
+    // use refreshDatabase
     public function create(array $data): Category
     {
         return Category::create($data);
