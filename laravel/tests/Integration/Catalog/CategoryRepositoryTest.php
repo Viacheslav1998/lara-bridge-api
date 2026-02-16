@@ -3,13 +3,15 @@
 namespace Tests\Integration\Catalog;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class CategoryRepositoryTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_can_save_a_category_to_database(): void
+    #[Test]
+    public function it_can_save_a_category_to_database(): void
     {
         $data = [ 'name' => 'Куртки', 'slug' => 'kurtki'];
 
