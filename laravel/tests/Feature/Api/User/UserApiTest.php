@@ -12,7 +12,8 @@ class UserApiTest extends TestCase
     use RefreshDatabase;
     use WithFaker;
 
-    public function test_a_user_can_be_created_via_api()
+    #[Test]
+    public function it_user_can_be_created_via_api()
     {
         $userData = [
             'first_name' => $this->faker->firstName,
@@ -38,8 +39,8 @@ class UserApiTest extends TestCase
         ]);
     }
 
-
-    public function test_a_single_user_can_be_retrieved_via_api()
+    #[Test]
+    public function it_returns_a_single_user_via_api()
     {
         $user = User::factory()->create();
 
@@ -54,8 +55,8 @@ class UserApiTest extends TestCase
             ]);
     }
 
-
-    public function test_a_can_updated_via_api()
+    #[Test]
+    public function it_can_be_updated_via_api()
     {
         $user = User::factory()->create();
 
@@ -93,7 +94,8 @@ class UserApiTest extends TestCase
         ]);
     }
 
-    public function test_a_user_can_be_deleted_via_api()
+    #[Test]
+    public function it_a_user_can_be_deleted_via_api()
     {
         $user = User::factory()->create();
 
@@ -104,6 +106,7 @@ class UserApiTest extends TestCase
         $this->assertDatabaseMissing('users', ['id' => $user->id]);
     }
 
+    #[Test]
     public function test_users_can_be_retrieved_with_pagination_via_api()
     {
         User::factory()->count(30)->create();
