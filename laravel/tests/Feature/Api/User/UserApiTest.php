@@ -1,10 +1,11 @@
 <?php
 
-namespace Tests\Feature\Domain\Repository;
+namespace Tests\Feature\Api\Catalog;
 
 use App\Domain\User\Entities\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class UserApiTest extends TestCase
@@ -107,7 +108,7 @@ class UserApiTest extends TestCase
     }
 
     #[Test]
-    public function test_users_can_be_retrieved_with_pagination_via_api()
+    public function it_users_can_be_retrieved_with_pagination_via_api()
     {
         User::factory()->count(30)->create();
         $perPage = 10;

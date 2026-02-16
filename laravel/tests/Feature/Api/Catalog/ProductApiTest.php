@@ -1,15 +1,14 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Api\Catalog;
 
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class ProductApiTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     */
-    public function test_example(): void
+    #[Test]
+    public function it_example(): void
     {
         $response = $this->get('/');
 
