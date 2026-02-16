@@ -11,13 +11,13 @@ class CategoryRepositoryTest extends TestCase
     use RefreshDatabase;
 
     #[Test]
-    public function it_can_save_a_category_to_database(): void
+    public function it_can_create_a_category_to_database(): void
     {
         $data = [ 'name' => 'Куртки', 'slug' => 'kurtki'];
 
         $repository = new \App\Domain\Catalog\Repositories\CategoryRepository();
 
-        $category = $repository->save($data);
+        $category = $repository->create($data);
 
         $this->assertInstanceOf(\App\Domain\Catalog\Entities\Category::class, $category);
 
