@@ -10,4 +10,9 @@ class CategoryRepository
     {
         return Category::create($data);
     }
+
+    public function findBySlug(string $slug)
+    {
+        return Category::where('slug', $slug)->first();
+    }
 }
