@@ -23,7 +23,19 @@ class CategoryRepositoryTest extends TestCase
     #[Test]
     public function it_can_store_a_category_in_database()
     {
+        $data = [
+            'name' => 'Laptop',
+            'slug' => 'laptop'
+        ];
 
+        $category = $this->repository->create($data);
+
+        $this->assertInstanceOf($category::class, $category);
+        $this->assertDatabaseHas('categories', [
+            'id' => $category->id,
+            'name' => 'Laptop',
+            'slug' => 'laptop'
+        ]);
     }
 
 }
