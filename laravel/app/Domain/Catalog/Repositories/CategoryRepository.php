@@ -16,4 +16,9 @@ class CategoryRepository
     {
         return Category::where('slug', $slug)->first();
     }
+
+    public function getAll()
+    {
+        return true;
+    }
 }

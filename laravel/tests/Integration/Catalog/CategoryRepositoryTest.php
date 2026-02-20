@@ -2,6 +2,7 @@
 
 namespace Tests\Integration\Catalog;
 
+use App\Domain\Catalog\Entities\Category;
 use App\Domain\Catalog\Repositories\CategoryRepository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;
@@ -36,6 +37,16 @@ class CategoryRepositoryTest extends TestCase
             'name' => 'Laptop',
             'slug' => 'laptop'
         ]);
+    }
+
+    #[Test]
+    public function it_can_retrieve_all_categories()
+    {
+        Category::factory()->count(3)->create();
+
+        $results = $this->repository->getAll();
+
+        $this->assertCount(3, $results);
     }
 
 }
