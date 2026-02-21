@@ -40,10 +40,15 @@ class CategoryRepositoryTest extends TestCase
     }
 
     #[Test]
-    public function it_can_retrieve_all_categories()
+    public function it_can_returns_all_categories()
     {
-        $categories = Category::factory()->count(3)->create();
-        $this->assertCount(3, $categories);
+        Category::factory()->create(['name' => 'Category 1', 'slug' => 'cat-1']);
+        Category::factory()->create(['name' => 'Category 2', 'slug' => 'cat-2']);
+
+        $result = Category::all();
+
+        $this->assertCount(2, $result);
+        $this->assertEquals('Category 1', $result->first()->name);
     }
 
 }
