@@ -51,4 +51,15 @@ class CategoryRepositoryTest extends TestCase
         $this->assertEquals('Category 1', $result->first()->name);
     }
 
+    #[Test]
+    public function it_can_find_category_by_id()
+    {
+        $category = Category::factory()->create();
+
+        $found = $this->repository->findById($category->id);
+
+        $this->assertInstanceOf(Category::class, $found);
+        $this->assertEquals($category->id, $found->id);
+    }
+
 }
