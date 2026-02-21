@@ -45,7 +45,7 @@ class CategoryRepositoryTest extends TestCase
         Category::factory()->create(['name' => 'Category 1', 'slug' => 'cat-1']);
         Category::factory()->create(['name' => 'Category 2', 'slug' => 'cat-2']);
 
-        $result = Category::all();
+        $result = $this->repository->getAll();
 
         $this->assertCount(2, $result);
         $this->assertEquals('Category 1', $result->first()->name);

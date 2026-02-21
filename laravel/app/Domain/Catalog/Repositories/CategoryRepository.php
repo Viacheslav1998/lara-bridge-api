@@ -19,6 +19,6 @@ class CategoryRepository
 
     public function getAll()
     {
-        return 123;
+        return Category::all();
     }
 }
