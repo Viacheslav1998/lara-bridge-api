@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
  */
 class CategoryFactory extends Factory
 {
-    protected $mode = Category::class;
+    protected $model = Category::class;
 
     public function definition(): array
     {

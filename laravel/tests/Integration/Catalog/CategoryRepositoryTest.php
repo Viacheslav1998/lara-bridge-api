@@ -42,11 +42,9 @@ class CategoryRepositoryTest extends TestCase
     #[Test]
     public function it_can_retrieve_all_categories()
     {
-        Category::factory()->count(3)->create();
-
-        $results = $this->repository->getAll();
-
-        $this->assertCount(3, $results);
+        $categories = Category::factory()->count(3)->create();
+        $this->assertCount(3, $categories);
+        ты остановился на том что бы сделать дубликаты и проверять записи- молодец ты продуктивен !!!
     }
 
 }

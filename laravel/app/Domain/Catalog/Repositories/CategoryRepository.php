@@ -19,6 +19,6 @@ class CategoryRepository
 
     public function getAll()
     {
-        return true;
+        return 123;
     }
 }
