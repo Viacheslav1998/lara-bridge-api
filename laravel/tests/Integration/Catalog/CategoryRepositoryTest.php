@@ -44,7 +44,6 @@ class CategoryRepositoryTest extends TestCase
     {
         $categories = Category::factory()->count(3)->create();
         $this->assertCount(3, $categories);
-        ты остановился на том что бы сделать дубликаты и проверять записи- молодец ты продуктивен !!!
     }
 
 }
