@@ -21,4 +21,11 @@ class CategoryRepository
     {
         return Category::all();
     }
+
+    public function findById($id)
+    {
+        $cats = Category::all();
+        return $cats->findOrFail($id);
+    }
+
 }
