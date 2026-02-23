@@ -64,7 +64,7 @@ class CategoryRepositoryTest extends TestCase
     public function it_returns_null_when_category_not_found()
     {
         $result = $this->repository->find(99999);
-        
+
         $this->assertNull($result);
     }
 
