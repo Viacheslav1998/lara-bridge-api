@@ -22,10 +22,9 @@ class CategoryRepository
         return Category::all();
     }
 
-    public function findById($id)
+    public function findById(int $id): Category
     {
-        $cats = Category::all();
-        return $cats->findOrFail($id);
+        return Category::findOrFail($id);
     }
 
 }

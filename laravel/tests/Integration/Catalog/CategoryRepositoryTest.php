@@ -31,7 +31,7 @@ class CategoryRepositoryTest extends TestCase
 
         $category = $this->repository->create($data);
 
-        $this->assertInstanceOf($category::class, $category);
+        $this->assertInstanceOf(Category::class, $category);
         $this->assertDatabaseHas('categories', [
             'id' => $category->id,
             'name' => 'Laptop',
