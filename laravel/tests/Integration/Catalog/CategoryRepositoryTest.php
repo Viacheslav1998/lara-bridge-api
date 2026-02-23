@@ -17,7 +17,6 @@ class CategoryRepositoryTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        // Initialize the repository.
         $this->repository = new CategoryRepository();
     }
 
@@ -58,8 +57,24 @@ class CategoryRepositoryTest extends TestCase
 
         $found = $this->repository->findById($category->id);
 
-        $this->assertInstanceOf(Category::class, $found);
-        $this->assertEquals($category->id, $found->id);
+        $this->assertTrue($category->is($found));
     }
+
+    #[Test]
+    public function it_returns_null_when_category_not_found()
+    {
+        $result = $this->repository->find(99999);
+        
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function it_throws_exception_when_category_not_found()
+    {
+        $this->expectException(\Illuminate\Database\Eloquent\ModelNotFoundException::class);
+
+        $this->repository->findById(99999);
+    }
+
 
 }
