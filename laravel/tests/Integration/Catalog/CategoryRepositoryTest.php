@@ -76,5 +76,20 @@ class CategoryRepositoryTest extends TestCase
         $this->repository->findById(99999);
     }
 
+    #[Test]
+    public function it_cannot_create_category_with_duplicate_slug()
+    {
+        Category::factory()->create([
+            'slug' => 'laptop'
+        ]);
+
+        $this->expectException(\Illuminate\Database\QueryException::class);
+
+        $this->repository->create([
+            'name' => 'Another Laptop',
+            'slug' => 'laptop'
+        ]);
+    }
+
 
 }
