@@ -91,5 +91,12 @@ class CategoryRepositoryTest extends TestCase
         ]);
     }
 
+    #[Test]
+    public function it_fails_to_save_without_required_fields(): void
+    {
+        $this->expectException(\Illuminate\Database\QueryException::class);
+
+        Category::create(['slug' => 'only-slug']);
+    }
 
 }
