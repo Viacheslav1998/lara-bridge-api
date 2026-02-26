@@ -111,5 +111,5 @@ class CategoryRepositoryTest extends TestCase
         $this->assertEquals('apple', $results->first()->slug);
     }
 
-    
+
 }
