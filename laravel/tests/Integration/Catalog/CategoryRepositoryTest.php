@@ -99,4 +99,17 @@ class CategoryRepositoryTest extends TestCase
         Category::create(['slug' => 'only-slug']);
     }
 
+    #[Test]
+    public function it_can_filter_categories_by_name(): void
+    {
+        Category::factory()->create(['name' => 'Apple', 'slug' => 'apple']);
+        Category::factory()->create(['name' => 'Samsung', 'slug' => 'samsung']);
+
+        $results = Category::where('name', 'like', '%Apple%')->get();
+
+        $this->assertCount(1, $results);
+        $this->assertEquals('apple', $results->first()->slug);
+    }
+
+    
 }
