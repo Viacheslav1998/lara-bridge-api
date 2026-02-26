@@ -3,10 +3,10 @@
 namespace App\Domain\Catalog\Repositories;
 
 use App\Domain\Catalog\Entities\Category;
+use Illuminate\Database\Eloquent\Collection;
 
 class CategoryRepository
 {
-    // use refreshDatabase
     public function create(array $data): Category
     {
         return Category::create($data);
@@ -30,6 +30,11 @@ class CategoryRepository
     public function find(int $id): ?Category
     {
         return Category::find($id);
+    }
+
+    public function searchByName(string $name): Collection
+    {
+        return Category::where('name', 'like', "%{$name}%")->get();
     }
 
 }

@@ -100,15 +100,24 @@ class CategoryRepositoryTest extends TestCase
     }
 
     #[Test]
-    public function it_can_filter_categories_by_name(): void
+    public function it_can_filter_categories_by_name_via_repository(): void
     {
         Category::factory()->create(['name' => 'Apple', 'slug' => 'apple']);
         Category::factory()->create(['name' => 'Samsung', 'slug' => 'samsung']);
 
-        $results = Category::where('name', 'like', '%Apple%')->get();
+        $results = $this->repository->searchByName('Apple');
 
         $this->assertCount(1, $results);
         $this->assertEquals('apple', $results->first()->slug);
+    }
+
+    #[Test]
+    public function it_returns_empty_collections_when_no_categories_exists(): void
+    {
+        $results = $this->repository->getAll();
+
+        $this->assertTrue($results->isEmpty());
+        $this->assertCount(0, $results);
     }
 
 
