@@ -12,6 +12,14 @@ class CategoryRepository
         return Category::create($data);
     }
 
+    public function updateOrCreate(string $slug, array $data = [])
+    {
+        return Category::updateOrCreate(
+            ['slug' => $slug],
+            $data
+        );
+    }
+
     public function findBySlug(string $slug)
     {
         return Category::where('slug', $slug)->first();

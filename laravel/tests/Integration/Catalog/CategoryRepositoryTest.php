@@ -39,6 +39,27 @@ class CategoryRepositoryTest extends TestCase
     }
 
     #[Test]
+    public function it_updates_existing_category(): void
+    {
+        Category::factory()->create(['name' => 'Old name', 'slug' => 'apple']);
+
+        $result = $this->repository->updateOrCreate('apple', ['name' => 'New Name']);
+
+        $this->assertEquals('New Name', $result->first()->name);
+        $this->assertDatabaseCount($result, 1);
+        $this->assertDatabaseHas($result, ['slug' => 'apple', 'name' => 'New Name']);
+    }
+
+    #[Test]
+    public function it_creates_new_category_if_not_exists(): void
+    {
+        $result = $this->repository->updateOrCreate('samsung', ['name' => 'Samsung Electronics']);
+
+        $this->assertDatabaseCount($result, 1);
+        $this->assertDatabaseHas($result, ['slug' => 'samsung']);
+    }
+
+    #[Test]
     public function it_can_returns_all_categories()
     {
         Category::factory()->create(['name' => 'Category 1', 'slug' => 'cat-1']);
@@ -96,7 +117,7 @@ class CategoryRepositoryTest extends TestCase
     {
         $this->expectException(\Illuminate\Database\QueryException::class);
 
-        Category::create(['slug' => 'only-slug']);
+        $this->repository->create(['slug' => 'only-slug']);
     }
 
     #[Test]
@@ -119,6 +140,8 @@ class CategoryRepositoryTest extends TestCase
         $this->assertTrue($results->isEmpty());
         $this->assertCount(0, $results);
     }
+
+
 
 
 }
