@@ -37,14 +37,8 @@ class CategoryRepository
         return Category::all();
     }
 
-    // public function findById(int $id): Category
-    // {
-    //     return Category::findOrFail($id);
-    // }
-
     public function findById(int $id): Category
     {
-        // Используй find(), а не findOrFail()!
         $category = Category::find($id);
 
         if (!$category) {
