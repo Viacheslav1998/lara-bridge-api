@@ -64,7 +64,7 @@ class CategoryRepositoryTest extends TestCase
     {
         $category = Category::factory()->create();
 
-        $this->repository->delete($category->id);   
+        $this->repository->delete($category->id);
 
         $this->assertDatabaseMissing('categories', [
             'id' => $category->id
