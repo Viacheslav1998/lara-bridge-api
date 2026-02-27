@@ -60,6 +60,18 @@ class CategoryRepositoryTest extends TestCase
     }
 
     #[Test]
+    public function it_can_delete_category(): void
+    {
+        $category = Category::factory()->create();
+
+        $this->repository->delete($category->id);   
+
+        $this->assertDatabaseMissing('categories', [
+            'id' => $category->id
+        ]);
+    }
+
+    #[Test]
     public function it_can_returns_all_categories()
     {
         Category::factory()->create(['name' => 'Category 1', 'slug' => 'cat-1']);
@@ -140,8 +152,5 @@ class CategoryRepositoryTest extends TestCase
         $this->assertTrue($results->isEmpty());
         $this->assertCount(0, $results);
     }
-
-
-
 
 }

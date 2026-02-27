@@ -25,6 +25,12 @@ class CategoryRepository
         return Category::where('slug', $slug)->first();
     }
 
+    public function delete(int $id): bool
+    {
+        $category = Category::findOrFail($id);
+        return $category->delete();
+    }
+
     public function getAll()
     {
         return Category::all();
