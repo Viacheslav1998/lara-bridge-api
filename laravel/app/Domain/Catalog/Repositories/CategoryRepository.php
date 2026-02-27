@@ -6,7 +6,6 @@ use App\Domain\Catalog\Entities\Category;
 use App\Domain\Catalog\Exceptions\CategoryNotFoundException;
 use Illuminate\Database\Eloquent\Collection;
 
-
 class CategoryRepository
 {
     public function create(array $data): Category
@@ -43,17 +42,17 @@ class CategoryRepository
     //     return Category::findOrFail($id);
     // }
 
- public function findById(int $id): Category
-{
-    // Используй find(), а не findOrFail()!
-    $category = Category::find($id);
+    public function findById(int $id): Category
+    {
+        // Используй find(), а не findOrFail()!
+        $category = Category::find($id);
 
-    if (!$category) {
-        throw CategoryNotFoundException::byId($id);
+        if (!$category) {
+            throw CategoryNotFoundException::byId($id);
+        }
+
+        return $category;
     }
-
-    return $category;
-}
 
     public function searchByName(string $name): Collection
     {
