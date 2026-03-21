@@ -12,12 +12,12 @@ class UserRepositoryTest extends TestCase
 {
     use RefreshDatabase;
 
-    private UserRepository $repo;
+    private UserRepository $repository;
 
     protected function setUp(): void
     {
         parent::setUp();
-        $this->repo = new UserRepository();
+        $this->repository = new UserRepository();
     }
 
     #[Test]
@@ -25,7 +25,7 @@ class UserRepositoryTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $actualUser = $this->repo->find($user->id);
+        $actualUser = $this->repository->find($user->id);
 
         $this->assertNotNull($actualUser);
         $this->assertEquals($user->id, $actualUser->id);
@@ -36,7 +36,7 @@ class UserRepositoryTest extends TestCase
     {
         $this->expectException(\Illuminate\Database\Eloquent\ModelNotFoundException::class);
 
-        $this->repo->findById(999);
+        $this->repository->findById(999);
     }
 
     #[Test]
@@ -44,6 +44,6 @@ class UserRepositoryTest extends TestCase
     {
         User::factory()->count(3)->create();
 
-        $this->assertSame(3, $this->repo->count());
+        $this->assertSame(3, $this->repository->count());
     }
 }
