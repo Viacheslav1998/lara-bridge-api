@@ -5,7 +5,6 @@ namespace Tests\Feature\Api\Catalog;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
-
 class CategoryApiTest extends TestCase
 {
     #[Test]
