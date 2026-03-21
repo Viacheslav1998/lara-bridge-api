@@ -2,9 +2,8 @@
 
 namespace Tests\Feature\Api\Catalog;
 
-use App\Domain\Catalog\Entities\Category;
-use PHPUnit\Framework\Attributes\Test;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class CategoryApiTest extends TestCase
@@ -27,9 +26,10 @@ class CategoryApiTest extends TestCase
         $response->assertStatus(201);
 
         // 4. check json
-        $response->assertJson(fn ($json) => 
+        $response->assertJson(
+            fn ($json) =>
           $json
-              ->whereType('name', 'string') 
+              ->whereType('name', 'string')
               ->whereType('slug', 'string')
         );
 
@@ -40,5 +40,5 @@ class CategoryApiTest extends TestCase
         ]);
     }
 
-    
+
 }
