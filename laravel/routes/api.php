@@ -23,7 +23,8 @@ Route::prefix('analytics')->group(function () {
 
 // Resource | CRUD
 Route::apiResources([
-    'users' => UserController::class
+    'users' => UserController::class,
+    'categories' => CategoryController::class
 ]);
 
 /**
