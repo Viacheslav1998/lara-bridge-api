@@ -9,9 +9,9 @@ use App\Actions\User\GetPaginatedUsersAction;
 use App\Actions\User\UpdateUserAction;
 use App\Domain\User\Entities\User;
 use App\Domain\User\Services\UserService;
-use App\Http\Requests\CreateUserRequest;
-use App\Http\Requests\UpdateUserRequest;
-use App\Http\Requests\UserIndexRequest;
+use App\Http\Requests\User\CreateUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
+use App\Http\Requests\User\UserIndexRequest;
 use App\Http\Resources\UserResource;
 use App\Http\Responses\ApiResponse;
 
