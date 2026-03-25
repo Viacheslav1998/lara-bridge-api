@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\Analytics\UserAnalyticsController;
-use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/test-user-job', [UserController::class, 'jobLog']);
