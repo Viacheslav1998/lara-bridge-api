@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Api\Catalog;
+namespace Tests\Feature\Api\User;
 
 use App\Domain\User\Entities\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;

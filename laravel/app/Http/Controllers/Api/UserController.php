@@ -12,7 +12,7 @@ use App\Domain\User\Services\UserService;
 use App\Http\Requests\User\CreateUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Http\Requests\User\UserIndexRequest;
-use App\Http\Resources\UserResource;
+use App\Http\Resources\User\UserResource;
 use App\Http\Responses\ApiResponse;
 
 class UserController

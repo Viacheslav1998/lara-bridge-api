@@ -3,7 +3,7 @@
 namespace App\Actions\User;
 
 use App\Domain\User\Repositories\UserRepository;
-use App\Http\Resources\UserResource;
+use App\Http\Resources\User\UserResource;
 
 class GetPaginatedUsersAction
 {
