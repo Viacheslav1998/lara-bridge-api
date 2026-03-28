@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Responses\ApiResponse;
+
 class CategoryController
 {
-    public function test(): void
-    {
-        echo '123';
-    }
+   /**
+    * Store a Categories
+    */
+   public function store()
+   {
+   
+   }
+
 }

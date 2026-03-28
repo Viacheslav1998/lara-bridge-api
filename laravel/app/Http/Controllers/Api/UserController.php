@@ -41,8 +41,6 @@ class UserController
      */
     public function store(CreateUserRequest $request, CreateUserAction $action)
     {
-        $validatedData = $request->validated();
-
         $user = $action->execute($request->validated());
 
         return ApiResponse::success(
