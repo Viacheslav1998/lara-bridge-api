@@ -11,7 +11,8 @@ class GetUserCountAction
 {
     protected UserRepository $user;
 
-    public function __construct(UserRepository $user) {
+    public function __construct(UserRepository $user)
+    {
         $this->user = $user;
     }
 

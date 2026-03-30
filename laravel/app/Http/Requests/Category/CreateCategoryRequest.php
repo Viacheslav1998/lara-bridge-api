@@ -14,11 +14,11 @@ class CreateCategoryRequest extends FormRequest
         return true;
     }
 
-     /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array<string, string>
-     */
+    /**
+    * Get the error messages for the defined validation rules.
+    *
+    * @return array<string, string>
+    */
     public function messages(): array
     {
         return [
