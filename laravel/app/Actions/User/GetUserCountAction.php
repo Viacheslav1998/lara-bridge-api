@@ -9,13 +9,14 @@ use App\Domain\User\Repositories\UserRepository;
  */
 class GetUserCountAction
 {
-    public function __construct(
-        UserRepository $userRepository
-    ) {
+    protected UserRepository $user;
+
+    public function __construct(UserRepository $user) {
+        $this->user = $user;
     }
 
     public function execute(): int
     {
-        return $this->userRepository->count();
+        return $this->user->count();
     }
 }
