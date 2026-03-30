@@ -13,7 +13,7 @@ class CategoryController
     */
    public function store()
    {
-      $categories = 
+      return 123;
    }
 
 }
