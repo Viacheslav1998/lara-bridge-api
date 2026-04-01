@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Domain\Catalog\Entities\Category;
+use App\Domain\Catalog\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 

@@ -1,12 +1,12 @@
 .<?php
 
-namespace App\Domain\Order\Entities;
+namespace App\Domain\Catalog\Models;
 
-use Database\Factories\OrderFactory;
+use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class Product extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,7 @@ class Order extends Model
      *
      * @var string
      */
-    protected $table = 'orders';
+    protected $table = 'products';
 
     /**
     * The attributes that are mass assignable.
@@ -23,17 +23,25 @@ class Order extends Model
     * @var array<int, string>
     */
     protected $fillable = [
-        'user_id',
-        'status',
-        'total_price'
+        'category_id',
+        'name',
+        'type',
+        'price',
+        'count',
+        'country_origin',
+        'year',
+        'description',
+        'content',
+        'assessment',
     ];
+
 
     /**
      * use Custom way factory
      */
     protected static function newFactory()
     {
-        return OrderFactory::new();
+        return ProductFactory::new();
     }
 
 }

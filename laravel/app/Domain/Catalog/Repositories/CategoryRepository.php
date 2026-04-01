@@ -2,7 +2,7 @@
 
 namespace App\Domain\Catalog\Repositories;
 
-use App\Domain\Catalog\Entities\Category;
+use App\Domain\Catalog\Models\Category;
 use App\Domain\Catalog\Exceptions\CategoryNotFoundException;
 use Illuminate\Database\Eloquent\Collection;
 

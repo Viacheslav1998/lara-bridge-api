@@ -2,7 +2,7 @@
 
 namespace App\Domain\User\Repositories;
 
-use App\Domain\User\Entities\User;
+use App\Domain\User\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class UserRepository

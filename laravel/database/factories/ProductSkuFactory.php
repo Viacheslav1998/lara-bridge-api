@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Domain\Catalog\Entities\Product;
-use App\Domain\Catalog\Entities\ProductSku;
+use App\Domain\Catalog\Models\Product;
+use App\Domain\Catalog\Models\ProductSku;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

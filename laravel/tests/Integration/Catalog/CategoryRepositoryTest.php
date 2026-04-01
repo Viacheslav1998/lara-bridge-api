@@ -2,7 +2,7 @@
 
 namespace Tests\Integration\Catalog;
 
-use App\Domain\Catalog\Entities\Category;
+use App\Domain\Catalog\Models\Category;
 use App\Domain\Catalog\Repositories\CategoryRepository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;

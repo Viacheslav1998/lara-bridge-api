@@ -2,7 +2,7 @@
 
 namespace Tests\Integration\User;
 
-use App\Domain\User\Entities\User;
+use App\Domain\User\Models\User;
 use App\Domain\User\Repositories\UserRepository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;

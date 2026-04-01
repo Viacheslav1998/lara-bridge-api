@@ -1,12 +1,12 @@
-.<?php
+<?php
 
-namespace App\Domain\Catalog\Entities;
+namespace App\Domain\Catalog\Models;
 
-use Database\Factories\ProductSkuFactory;
+use Database\Factories\CategoryFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductSku extends Model
+class Category extends Model
 {
     use HasFactory;
 
@@ -15,28 +15,23 @@ class ProductSku extends Model
      *
      * @var string
      */
-    protected $table = 'product_skus';
-
+    protected $table = 'categories';
     /**
     * The attributes that are mass assignable.
     *
     * @var array<int, string>
     */
     protected $fillable = [
-       'product_id',
-       'color',
-       'stock_count',
-       'size',
-       'price'
+        'name',
+        'slug'
     ];
-
 
     /**
      * use Custom way factory
      */
     protected static function newFactory()
     {
-        return ProductSkuFactory::new();
+        return CategoryFactory::new();
     }
 
 }
