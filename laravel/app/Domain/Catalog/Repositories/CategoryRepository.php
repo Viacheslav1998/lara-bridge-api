@@ -2,8 +2,8 @@
 
 namespace App\Domain\Catalog\Repositories;
 
-use App\Domain\Catalog\Models\Category;
 use App\Domain\Catalog\Exceptions\CategoryNotFoundException;
+use App\Domain\Catalog\Models\Category;
 use Illuminate\Database\Eloquent\Collection;
 
 class CategoryRepository
