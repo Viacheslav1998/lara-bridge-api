@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources\Category;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CategoriesResource extends JsonResource
@@ -12,12 +11,11 @@ class CategoriesResource extends JsonResource
      *
      * @return array<string, mixed>
      */
-    public function toArray(Request $request): array
+    public function toArray($request): array
     {
         return [
-            'id'           => $this->id,
             'name'         => $this->name,
-            'first_name'   => $this->slug,
+            'slug'         => $this->slug,
         ];
     }
 }

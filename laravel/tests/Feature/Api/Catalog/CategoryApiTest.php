@@ -22,12 +22,12 @@ class CategoryApiTest extends TestCase
 
         $response->assertStatus(201);
 
-        $response->assertJson(
-            fn ($json) =>
-          $json
-              ->whereType('name', 'string')
-              ->whereType('slug', 'string')
-        );
+        $response->assertJson([
+            'data' => [
+                'name' => 'Phones',
+                'slug' => 'phones',
+            ],
+        ]);
 
         $this->assertDatabaseHas('categories', [
             'name' => 'Phones',
