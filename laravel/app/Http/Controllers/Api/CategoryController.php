@@ -10,19 +10,18 @@ use App\Http\Responses\ApiResponse;
 
 class CategoryController
 {
+    /**
+      * Store a Categories
+      */
+    public function store(CreateCategoryRequest $request, CreateCategoryAction $action)
+    {
+        $category = $action->execute($request->validated());
 
-   /**
-     * Store a Categories
-     */
-   public function store(CreateCategoryRequest $request, CreateCategoryAction $action)
-   {
-         $category = $action->execute($request->validated());
-         
-         return ApiResponse::success(
+        return ApiResponse::success(
             new CategoriesResource($category),
             'Category created successfully',
             201
-         );
-   }
+        );
+    }
 
 }
