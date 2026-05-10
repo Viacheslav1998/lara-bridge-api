@@ -7,10 +7,10 @@ use App\Domain\User\Repositories\UserRepository;
 
 class CreateUserAction
 {
-
     public function __construct(
         private UserRepository $repository
-    ) {}
+    ) {
+    }
 
     /**
     * execute create new user
