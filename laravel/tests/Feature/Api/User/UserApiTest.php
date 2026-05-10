@@ -14,6 +14,14 @@ class UserApiTest extends TestCase
     use WithFaker;
 
     #[Test]
+    public function it_just_test_for_test()
+    {
+        $response = $this->get('/');
+        
+        $response->assertStatus(200);
+    }
+
+    #[Test]
     public function it_user_can_be_created_via_api()
     {
         $userData = [

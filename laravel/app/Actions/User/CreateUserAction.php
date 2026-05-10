@@ -2,20 +2,28 @@
 
 namespace App\Actions\User;
 
-use App\Domain\User\Services\UserService;
+use App\Domain\User\Models\User;
+use App\Domain\User\Repositories\UserRepository;
+
+// use App\Domain\User\Services\UserService;
+
 
 class CreateUserAction
 {
+
     public function __construct(
-        private UserService $service
-    ) {
-    }
+        private UserRepository $repository;
+    ) {}
 
     /**
     * execute create new user
     */
-    public function execute(array $data)
+    public function execute(array $data): User
     {
-        return $this->service->createUser($data);
+        $user =  $this->repository->create($data);
+
+        // may create event domain
+
+        return $user;
     }
 }
