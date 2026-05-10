@@ -5,8 +5,6 @@ namespace App\Actions\User;
 use App\Domain\User\Models\User;
 use App\Domain\User\Repositories\UserRepository;
 
-
-
 class CreateUserAction
 {
 
@@ -19,10 +17,6 @@ class CreateUserAction
     */
     public function execute(array $data): User
     {
-        $user = $this->repository->create($data);
-
-        // may create event domain
-
-        return $user;
+        return $this->repository->create($data);
     }
 }
