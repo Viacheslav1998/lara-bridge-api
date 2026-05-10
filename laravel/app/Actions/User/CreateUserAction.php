@@ -9,7 +9,7 @@ class CreateUserAction
 {
 
     public function __construct(
-        private UserRepository $repository;
+        private UserRepository $repository
     ) {}
 
     /**
