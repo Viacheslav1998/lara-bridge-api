@@ -17,7 +17,7 @@ class UserApiTest extends TestCase
     public function it_just_test_for_test()
     {
         $response = $this->get('/');
-        
+
         $response->assertStatus(200);
     }
 
