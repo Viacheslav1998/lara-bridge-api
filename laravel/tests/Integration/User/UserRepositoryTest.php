@@ -32,14 +32,6 @@ class UserRepositoryTest extends TestCase
     }
 
     #[Test]
-    public function it_throws_exception_if_user_not_found(): void
-    {
-        $this->expectException(\Illuminate\Database\Eloquent\ModelNotFoundException::class);
-
-        $this->repository->findById(999);
-    }
-
-    #[Test]
     public function it_counts_users(): void
     {
         User::factory()->count(3)->create();

@@ -65,42 +65,47 @@ class UserApiTest extends TestCase
     }
 
     #[Test]
-    public function it_can_be_updated_via_api()
+    public function it_can_be_updated_via_api(): void
     {
         $user = User::factory()->create();
 
         $newData = [
-           'first_name' => 'UpdateName',
-            'last_name' => 'UpdLName',
-            'country' => 'Karaganda',
-            'phone' => '678',
-            'number' => '9292',
-            'super' => 'id-asd',
-            'email' => 'nickik@gmail.com',
-            'bio' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste sequi quaerat laudantium voluptates accusantium dolor fuga quibusdam nemo et! Esse fugiat dicta hic nemo dolor ipsum, alias reprehenderit in nostrum?'
+            'first_name' => 'UpdateName',
+            'last_name'  => 'UpdLName',
+            'country'    => 'Karaganda',
+            'phone'      => '678',
+            'number'     => '9292',
+            'super'      => 'id-asd',
+            'email'      => 'nickik@gmail.com',
+            'bio'        => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste sequi quaerat laudantium voluptates...'
         ];
 
         $response = $this->putJson('/api/users/' . $user->id, $newData);
 
         $response->assertStatus(201)
-            ->assertJson([
+            ->assertJsonStructure([
+                'status',
+                'message',
                 'data' => [
-                    'first_name' => 'UpdateName',
-                    'last_name' => 'UpdLName',
-                    'country' => 'Karaganda',
-                    'phone' => '678',
-                    'number' => '9292',
-                    'super' => 'id-asd',
-                    'email' => 'nickik@gmail.com',
-                    'bio' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste sequi quaerat laudantium voluptates accusantium dolor fuga quibusdam nemo et! Esse fugiat dicta hic nemo dolor ipsum, alias reprehenderit in nostrum?'
-                ],
+                    'id',
+                    'first_name',
+                    'last_name',
+                    'country',
+                    'phone',
+                    'number',
+                    'super',
+                    'email',
+                    'bio'
+                ]
+            ])
+            ->assertJson([
+                'data' => $newData,
             ]);
 
-        $this->assertDatabaseHas('users', [
-            'id' => $user->id,
-            'first_name' => 'UpdateName',
-            'country' => 'Karaganda',
-        ]);
+        $this->assertDatabaseHas('users', array_merge(
+            ['id' => $user->id],
+            $newData
+        ));
     }
 
     #[Test]

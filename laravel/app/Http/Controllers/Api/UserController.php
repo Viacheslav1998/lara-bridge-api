@@ -8,6 +8,7 @@ use App\Actions\User\FilterUserAction;
 use App\Actions\User\GetPaginatedUsersAction;
 use App\Actions\User\UpdateUserAction;
 use App\Domain\User\Models\User;
+use App\Domain\User\Repositories\UserRepository;
 use App\Domain\User\Services\UserService;
 use App\Http\Requests\User\CreateUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
@@ -18,10 +19,12 @@ use App\Http\Responses\ApiResponse;
 class UserController
 {
     protected $userService;
+    protected $repository;
 
-    public function __construct(UserService $userService)
+    public function __construct(UserService $userService, UserRepository $repository)
     {
         $this->userService = $userService;
+        $this->repository = $repository;
     }
 
     /**
@@ -54,10 +57,8 @@ class UserController
     /**
      * Display the specified resource.
      */
-    public function show(int $id)
+    public function show(User $user)
     {
-        $user = $this->userService->getCurrentOrFail($id);
-
         return ApiResponse::success(
             new UserResource($user),
             'user was just found',
@@ -71,7 +72,7 @@ class UserController
      */
     public function update(UpdateUserRequest $request, User $user, UpdateUserAction $action)
     {
-        $updatedUser = $action->execute($request->validated(), $user->id);
+        $updatedUser = $action->execute($request->validated(), $user);
 
         return ApiResponse::success(
             new UserResource($updatedUser),

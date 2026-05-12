@@ -36,26 +36,13 @@ class UserRepository
         return User::find($id);
     }
 
-    public function findById(int $id): User
-    {
-        return User::findOrFail($id);
-    }
-
     public function destroy(int $id)
     {
         return User::destroy($id);
     }
 
     /**
-     * Attention!
-     * you can use User::updateOrCreate
-     * =====
-     *
-     * update current user, use Eloquent update() method.
-     *
-     * @param User $user if exists.
-     * @param array $data for udpate.
-     * @return User updated model.
+     * update user
      */
     public function update(User $user, array $data): User
     {

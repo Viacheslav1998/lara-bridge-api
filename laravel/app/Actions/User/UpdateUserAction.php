@@ -2,21 +2,21 @@
 
 namespace App\Actions\User;
 
-use App\Domain\User\Services\UserService;
+use App\Domain\User\Models\User;
+use App\Domain\User\Repositories\UserRepository;
 
 class UpdateUserAction
 {
     public function __construct(
-        private UserService $service
+        private UserRepository $repository
     ) {
     }
 
     /**
-     * @param array $data request
-     * @param int $userId ID user for update
+     *execute update user
      */
-    public function execute(array $data, int $userId)
+    public function execute(array $data, User $user): User
     {
-        return $this->service->updateCurrentUser($userId, $data);
+        return $this->repository->update($user, $data);
     }
 }

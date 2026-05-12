@@ -36,11 +36,6 @@ class UserService
         return $this->repository->find($id);
     }
 
-    public function getCurrentOrFail(int $id)
-    {
-        return $this->repository->findById($id);
-    }
-
     public function destroyUser(int $userId)
     {
         return $this->repository->destroy($userId);
