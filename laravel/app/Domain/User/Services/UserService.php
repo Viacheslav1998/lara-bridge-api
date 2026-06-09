@@ -15,7 +15,7 @@ class UserService
     }
 
     public function findUsersByFilters(array $filters)
-    {   
+    {
         $InvalidFilters = array_diff(array_keys($filters), $this->allowedFilters);
 
         if (!empty($InvalidFilters)) {
