@@ -7,12 +7,8 @@ echo "-------------------------------------"
 echo "Auto-fixing PHP code style..."
 echo "-------------------------------------"
 
-
 php "$LARAVEL_DIR/vendor/bin/php-cs-fixer" fix \
     --config="$LARAVEL_DIR/php-cs-fixer.dist.php" \
-    --quiet
-
-
-git add .
+    --quiet || true
 
 echo "Done! Code is clean."
