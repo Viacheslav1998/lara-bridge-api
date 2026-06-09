@@ -7,6 +7,7 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class UserRepository
 {
+    
     public function findByFilters(array $filters)
     {
         $query = User::query();
@@ -41,9 +42,6 @@ class UserRepository
         return User::destroy($id);
     }
 
-    /**
-     * update user
-     */
     public function update(User $user, array $data): User
     {
         $user->update($data);

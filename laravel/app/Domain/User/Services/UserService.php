@@ -15,7 +15,7 @@ class UserService
     }
 
     public function findUsersByFilters(array $filters)
-    {
+    {   
         $InvalidFilters = array_diff(array_keys($filters), $this->allowedFilters);
 
         if (!empty($InvalidFilters)) {
@@ -34,23 +34,6 @@ class UserService
     public function getCurrentUser(int $id)
     {
         return $this->repository->find($id);
-    }
-
-    public function destroyUser(int $userId)
-    {
-        return $this->repository->destroy($userId);
-    }
-
-    public function createUser(array $data)
-    {
-        return $this->repository->create($data);
-    }
-
-    public function updateCurrentUser(int $userId, array $data)
-    {
-        $user = $this->repository->findById($userId);
-
-        return $this->repository->update($user, $data);
     }
 
 }

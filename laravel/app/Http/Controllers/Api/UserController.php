@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Actions\User\CreateLogAction;
 use App\Actions\User\CreateUserAction;
+use App\Actions\User\DestroyUserAction;
 use App\Actions\User\FilterUserAction;
 use App\Actions\User\GetPaginatedUsersAction;
 use App\Actions\User\UpdateUserAction;
@@ -79,18 +80,17 @@ class UserController
             'User was updated successfully',
             201
         );
-
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove user
      */
-    public function destroy(int $id)
+    public function destroy(int $id, DestroyUserAction $action)
     {
         $user = $this->userService->getCurrentUser($id);
 
         if (!empty($user)) {
-            $this->userService->destroyUser($id);
+            $action->execute($id);
             return apiResponse::success(
                 $user,
                 'The user has been successfully deleted.',
@@ -99,7 +99,6 @@ class UserController
         }
 
         return apiResponse::error('User not Found!', 404, 'Current User Not Found');
-
     }
 
     /**
