@@ -29,10 +29,10 @@ return (new Config())
         'no_trailing_whitespace' => true,
         'no_empty_statement' => true,
         'cast_spaces' => true,
-        'concat_space' => ['spacing' => 'one'],
+        // 'concat_space' => ['spacing' => 'one'],
         'increment_style' => ['style' => 'post'],
         'line_ending' => true,
-        'method_argument_space' => ['on_multiline' => 'ensure_fully_multiline'],
+        // 'method_argument_space' => ['on_multiline' => 'ensure_fully_multiline'],
         'no_blank_lines_after_class_opening' => true,
         'no_blank_lines_after_phpdoc' => true,
     ])
