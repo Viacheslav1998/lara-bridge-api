@@ -8,21 +8,13 @@ use PHPUnit\Framework\Attributes\Test;
 
 class CalculateTest extends TestCase
 {
-
-
     #[Test]
-    public function it_super_test()
+    public function it_test_calculator_can_add_number_to_base()
     {
-        echo '13';
+        $calculator = new CalculateService(5);
+        
+        $calculator->times(2);
+
+        $this->assertEquals(10, $calculator->amount);
     }
-
-    // #[Test]
-    // public function it_just_test_calculate()
-    // {
-    //     $calculator = new CalculateService();
-
-    //     $result = $calculator->add(5, 10);
-
-    //     $this->assertEquals(15, $result);
-    // }
 }
