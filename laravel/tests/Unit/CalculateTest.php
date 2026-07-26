@@ -17,4 +17,6 @@ class CalculateTest extends TestCase
 
         $this->assertEquals(10, $calculator->amount);
     }
+
 }
+
