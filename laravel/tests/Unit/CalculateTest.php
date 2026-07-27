@@ -9,7 +9,7 @@ use PHPUnit\Framework\Attributes\Test;
 class CalculateTest extends TestCase
 {
     #[Test]
-    public function it_test_calculator_can_add_number_to_base()
+    public function it_calculator_can_add_number_to_base()
     {
         $calculator = new CalculateService(5);
         
