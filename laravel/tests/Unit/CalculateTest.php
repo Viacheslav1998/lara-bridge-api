@@ -11,11 +11,15 @@ class CalculateTest extends TestCase
     #[Test]
     public function it_calculator_can_add_number_to_base()
     {
-        $calculator = new CalculateService(5);
+        $clc = new CalculateService(5);
         
-        $calculator->times(2);
+        $product = $clc->times(2);
 
-        $this->assertEquals(10, $calculator->amount);
+        $this->assertEquals(10, $product->amount);
+
+        $product = $clc->times(3);
+
+        $this->assertEquals(15, $product->amount);
     }
 
 }

@@ -12,11 +12,9 @@ class CalculateService
         $this->amount = $amount;
     }  
 
-    public function times(int $multiplier)
+    public function times(int $multiplier): self
     {
-        $this->amount *= $multiplier;
-
-        return $this->amount;
+        return new self($this->amount * $multiplier);
     }
 
 }
