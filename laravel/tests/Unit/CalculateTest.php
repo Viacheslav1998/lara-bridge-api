@@ -27,11 +27,14 @@ class CalculateTest extends TestCase
     #[Test]
     public function it_equality(): void
     {
+        // $this->assertTrue((new DollarService(5))->equals(new DollarService(5)));
 
-        $fiveA = new DollarService(5);
-        $fiveB = new DollarService(5);
+        $fiveDollarsA = new DollarService(5);
+        $fiveDollarsB = new DollarService(5);
 
-        $this->assertTrue($fiveA->equals($fiveB));
+        $result = $fiveDollarsA->equals($fiveDollarsB);
+
+        $this->assertTrue($result);
     }
 
 }
