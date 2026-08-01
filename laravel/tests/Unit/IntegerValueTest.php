@@ -5,10 +5,11 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use App\Domain\User\Services\CalculateService;
 use App\Domain\User\Services\DollarService;
+use App\Domain\User\Services\IntegerService;
 
 use PHPUnit\Framework\Attributes\Test;
 
-class CalculateTest extends TestCase
+class IntegerValueTest extends TestCase
 {
     #[Test]
     public function it_calculator_can_add_number_to_base()
@@ -27,14 +28,25 @@ class CalculateTest extends TestCase
     #[Test]
     public function it_equality(): void
     {
-        // $this->assertTrue((new DollarService(5))->equals(new DollarService(5)));
+        // $this->assertTrue((new DollarService(5))->equals(new DollarService(5))); kent way
+        // $this->assertEquals(new DollarService(5), new DollarService(5)); php way
 
         $fiveDollarsA = new DollarService(5);
         $fiveDollarsB = new DollarService(5);
+        $sixDollarC = new DollarService(6);
 
         $result = $fiveDollarsA->equals($fiveDollarsB);
 
         $this->assertTrue($result);
+        // $this->assertFalse($fiveDollarsA->equals($sixDollarC));
+    }
+
+
+    #[Test]
+    public function it_get_number_random_integer(): void
+    {
+        $number = new IntegerService();
+        $this->assertIsInt($number->getNumber());
     }
 
 }
