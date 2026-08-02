@@ -11,8 +11,14 @@ class DollarService
         $this->amount = $amount;
     }
 
-    public function equals(DollarService $other): bool
+    // [mixed]type: str, int, obj ...
+    public function equals(mixed $obj): bool
     {
-        return true;
+        if(!$obj instanceof self)
+        {
+            return false;
+        }
+
+        return $this->amount === $obj->amount;
     }
 }
